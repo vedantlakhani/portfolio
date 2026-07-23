@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vedant Lakhani — Product Manager</title>
+<meta name="description" content="Vedant Lakhani. Product manager building climate tech that ships. He wrote the spec for his own life in a 2024 essay, then founded it. Open to Summer 2026 PM roles." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F4F1EA'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%232C4BFF'/%3E%3C/svg%3E" />
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ================================================================
+   SKYLIGHT — the story of someone who looked out the window
+   long enough to see what needed building.
+   Day → Window → Night (the prophecy) → Dawn (the build) → Day.
+   Single file. No build step. No frameworks. No 3D engine —
+   the scroll IS the camera.
+   ================================================================ */
+:root{
+  --paper:  #F4F1EA;
+  --ink:    #14120F;
+  --muted:  #6B655A;
+  --line:   #DDD7C7;
+  --blue:   #2C4BFF;
+  --amber:  #FFB25A;
+  --night:  #0C1130;
+  --night2: #1B2456;
+  --dawn1:  #2A2A63;
+  --dawn2:  #F0895B;
+  --dawn3:  #FCD8A0;
+}
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  font-family:'Hanken Grotesk', -apple-system, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:17px; line-height:1.62;
+  overflow-x:hidden;
+}
+::selection{ background:var(--blue); color:#fff; }
+a{ color:inherit; }
+.display{ font-family:'Bricolage Grotesque', Georgia, sans-serif; }
+.mono{ font-family:'Red Hat Mono', monospace; letter-spacing:.03em; }
+
+.container{ max-width:1360px; margin:0 auto; padding-inline:clamp(22px,4.5vw,64px); position:relative; z-index:2; }
+
+/* edge registration marks — uses the margins instead of leaving them dead */
+.container::before, .container::after{
+  content:''; position:absolute; top:0; bottom:0; width:1px; background:var(--line); opacity:.7;
+}
+.container::before{ left:0; } .container::after{ right:0; }
+@media (max-width:820px){ .container::before,.container::after{ display:none; } }
+
+.eyebrow{
+  font-family:'Red Hat Mono',monospace; font-size:12px; font-weight:500; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--blue);
+}
+
+/* ================= FIXED SKY LAYER ================= */
+#sky{
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:var(--paper);
+  transition:background .1s linear;
+}
+#stars{ position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:0; transition:opacity .3s; }
+#grain{
+  position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.035; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================= NAV ================= */
+nav{ position:fixed; top:0; left:0; right:0; z-index:50; background:rgba(244,241,234,.72); backdrop-filter:blur(10px); border-bottom:1px solid rgba(221,215,199,.35); transition:background .1s linear, border-color .15s linear; }
+nav .container{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav-mark{ width:14px; height:14px; border-radius:50%; background:var(--blue); }
+.nav-links{ display:flex; gap:26px; list-style:none; }
+.nav-links a{
+  font-family:'Red Hat Mono',monospace; font-size:11.5px; letter-spacing:.09em; text-transform:uppercase;
+  text-decoration:none; color:var(--ink); transition:color .15s linear;
+}
+.nav-avail{
+  display:flex; align-items:center; gap:7px; font-family:'Red Hat Mono',monospace; font-size:10.5px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--ink); transition:color .15s linear;
+}
+nav.on-dark .nav-links a, nav.on-dark .nav-avail{ color:#EEEBFB; }
+nav.on-dark{ border-bottom-color:rgba(255,255,255,.14); }
+.nav-avail .dot{ width:6px; height:6px; border-radius:50%; background:var(--blue); animation:blip 2.6s ease-in-out infinite; }
+@keyframes blip{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+@media (max-width:760px){ .nav-links{ display:none; } }
+
+/* ================= ACT I — HERO (day) ================= */
+#hero{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 0 60px; }
+.hero-eyebrow{ margin-bottom:22px; }
+.hero-name{
+  font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-optical-sizing:auto;
+  font-size:clamp(3.4rem,13vw,10.5rem); line-height:.92; letter-spacing:-.02em;
+}
+.hero-role{
+  margin-top:18px; font-size:clamp(1rem,1.6vw,1.25rem); color:var(--muted); font-weight:500;
+}
+.hero-role b{ color:var(--ink); font-weight:600; }
+.avail-chip{
+  display:inline-flex; align-items:center; gap:8px; margin-top:26px;
+  font-family:'Red Hat Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  padding:8px 15px; border:1px solid var(--ink); border-radius:99px;
+}
+.avail-chip .dot{ width:6px; height:6px; border-radius:50%; background:var(--blue); animation:blip 2.6s ease-in-out infinite; }
+.scroll-cue{
+  margin-top:64px; font-family:'Red Hat Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.scroll-cue .bar{ width:1px; height:34px; background:var(--muted); position:relative; overflow:hidden; }
+.scroll-cue .bar::after{ content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--ink); animation:cue 1.8s ease-in-out infinite; }
+@keyframes cue{ to{ top:100%; } }
+@media (prefers-reduced-motion:reduce){ .scroll-cue .bar::after{ animation:none; top:0; } }
+
+/* ================= SCENE SCAFFOLD ================= */
+.scene{ position:relative; padding:clamp(70px,12vh,120px) 0; }
+.scene-inner{ max-width:700px; }
+.scene-inner.wide{ max-width:920px; }
+.scene .kicker{ margin-bottom:20px; }
+.scene h2{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(1.9rem,4.2vw,3.1rem); line-height:1.08; }
+.scene p.lede{ margin-top:20px; font-size:clamp(1.05rem,1.6vw,1.25rem); line-height:1.6; color:var(--ink); }
+.scene p.lede b{ color:var(--blue); font-weight:600; }
+.on-dark p.lede, .on-dark .lede{ color:#D8DAF0; }
+.on-dark .kicker{ color:var(--amber); }
+.on-dark h2{ color:#fff; }
+
+/* ================= ACT II — WINDOW ================= */
+#window{ padding-top:20px; }
+.window-frame{
+  margin:34px 0; position:relative; border:1.5px solid var(--ink); border-radius:6px;
+  aspect-ratio:16/9; overflow:hidden; background:linear-gradient(180deg,#EAF1FF,#F4F1EA);
+}
+.window-frame::before, .window-frame::after{ content:''; position:absolute; background:var(--ink); }
+.window-frame::before{ left:50%; top:0; bottom:0; width:1.5px; }
+.window-frame::after{ top:50%; left:0; right:0; height:1.5px; }
+.window-frame svg{ width:100%; height:100%; }
+
+.fig-cap{ margin-top:14px; font-family:'Red Hat Mono',monospace; font-size:11px; letter-spacing:.05em; color:var(--muted); }
+.fig-cap b{ color:var(--ink); }
+/* the AxNano caption sits directly on the dawn sky with no card behind it —
+   --muted fails contrast against the orange band, so it gets ink here instead */
+#dawn .fig-cap{ color:var(--ink); opacity:.82; }
+#dawn .fig-cap b{ opacity:1; }
+
+/* ================= ACT III — NIGHT / PROPHECY ================= */
+#night{ color:#fff; }
+#night .container{ z-index:3; }
+.constellation{ margin:40px 0; }
+.constellation svg{ width:100%; height:auto; }
+.constellation .star{ fill:#fff; }
+.constellation .path{ fill:none; stroke:var(--amber); stroke-width:1.4; stroke-linecap:round; stroke-dasharray:100; stroke-dashoffset:100; }
+.constellation text{ font-family:'Red Hat Mono',monospace; font-size:11px; fill:#9BA3D6; letter-spacing:.06em; }
+
+.doc-card{
+  margin:40px 0; max-width:560px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.18);
+  border-radius:10px; padding:28px 30px; backdrop-filter:blur(6px);
+  box-shadow:0 0 60px rgba(255,178,90,.06);
+}
+.doc-card .doc-head{ display:flex; justify-content:space-between; font-family:'Red Hat Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:#9BA3D6; margin-bottom:16px; }
+.doc-card .doc-head b{ color:var(--amber); }
+.doc-card p{ font-family:'Red Hat Mono',monospace; font-size:14px; line-height:2; color:#E8E9F5; }
+.doc-card .redline{ background-image:linear-gradient(var(--amber),var(--amber)); background-repeat:no-repeat; background-size:0% 2px; background-position:0 92%; transition:background-size 1s ease .3s; }
+.is-inview .redline{ background-size:100% 2px; }
+
+.tick{ margin:44px 0; position:relative; }
+.tick svg{ width:100%; height:60px; display:block; }
+.tick text{ font-family:'Red Hat Mono',monospace; font-size:10px; fill:#9BA3D6; letter-spacing:.08em; }
+.tick .tr-line{ stroke:rgba(255,255,255,.3); stroke-width:1; }
+.tick .tr-word{ font-family:'Hanken Grotesk',sans-serif; font-style:italic; font-size:15px; fill:var(--amber); }
+
+/* ================= ACT IV — DAWN / THE BUILD ================= */
+.deck{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:38px; }
+@media (max-width:760px){ .deck{ grid-template-columns:1fr; } }
+.deck-card{
+  border:1px solid var(--line); border-radius:12px; padding:26px; background:rgba(255,255,255,.94);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.deck-card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,18,15,.08); }
+.deck-card h3{ font-family:'Bricolage Grotesque',sans-serif; font-size:1.4rem; font-weight:700; }
+.deck-card .tag{ font-family:'Red Hat Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); }
+.deck-card p{ margin-top:10px; font-size:15px; line-height:1.6; color:var(--muted); }
+.deck-card p b{ color:var(--ink); font-weight:600; }
+
+#fig-mol{ margin:36px 0; }
+.fig-mol svg{ width:100%; height:auto; }
+.fig-mol text{ font-family:'Red Hat Mono',monospace; font-size:11px; fill:var(--ink); }
+.fig-mol line.cc{ stroke:var(--ink); stroke-width:1; transition:opacity .5s; }
+.fig-mol line.cc.broken{ opacity:.15; }
+.fig-mol line.cf{ stroke:var(--ink); stroke-width:1; }
+.fig-mol .snap{ stroke:var(--dawn2); stroke-width:2.4; stroke-linecap:round; opacity:0; transition:opacity .35s; }
+.fig-mol .snap.on{ opacity:1; }
+
+.ledger{ margin-top:36px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.ledger .lrow{ display:flex; justify-content:space-between; padding:14px 22px; font-size:15px; border-top:1px solid var(--line); }
+.ledger .lrow:first-child{ border-top:none; background:var(--paper); font-family:'Red Hat Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.ledger .lrow .lv{ font-family:'Red Hat Mono',monospace; font-size:14px; }
+.ledger .lrow.total{ font-weight:700; background:rgba(44,75,255,.05); }
+.ledger .lrow.total .lv{ color:var(--blue); }
+
+/* ================= ACT V — CONTACT / THE PERSON ================= */
+#contact{ background:var(--ink); color:var(--paper); padding:clamp(70px,12vh,120px) 0 40px; text-align:center; border-radius:26px 26px 0 0; }
+.contact-head{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(2.1rem,5.6vw,4rem); line-height:1.06; }
+.contact-head em{ font-style:italic; color:var(--amber); }
+.contact-sub{ margin-top:16px; color:#B9B4A4; max-width:52ch; margin-inline:auto; font-size:16px; }
+.contact-links{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:38px; }
+.contact-links a{
+  font-family:'Red Hat Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  padding:11px 19px; border-radius:8px; border:1.5px solid #3E392E; text-decoration:none; color:var(--paper);
+  transition:all .2s;
+}
+.contact-links a:hover{ border-color:var(--blue); background:var(--blue); }
+
+.signoff{ margin-top:70px; font-family:'Bricolage Grotesque',sans-serif; font-size:1.4rem; cursor:default; user-select:none; border-radius:6px; }
+.signoff .rev{ display:inline-block; }
+.signoff:focus-visible{ outline:1.5px solid var(--amber); outline-offset:6px; }
+.quiet-line{ margin-top:14px; font-size:13px; color:#8A8574; font-style:italic; }
+
+.foot-line{
+  margin-top:60px; padding-top:18px; border-top:1px solid #2C2820; display:flex; justify-content:space-between;
+  flex-wrap:wrap; gap:10px; font-family:'Red Hat Mono',monospace; font-size:10.5px; color:#7A7566;
+}
+
+/* ================= WINDOW SCENE ================= */
+.window-frame .grow{ transform:scaleY(0); transform-origin:bottom; transition:transform .9s cubic-bezier(.3,.6,.2,1); }
+.window-frame.is-inview .grow{ transform:scaleY(1); }
+.window-frame .aqi{ stroke-dasharray:700; stroke-dashoffset:700; transition:stroke-dashoffset 1.8s cubic-bezier(.3,.6,.2,1) .5s; }
+.window-frame.is-inview .aqi{ stroke-dashoffset:0; }
+html:not(.js) .window-frame .grow, html:not(.js) .window-frame .aqi{ transform:none; stroke-dashoffset:0; }
+
+.stand-stare{ margin:clamp(40px,7vh,64px) 0 0; border-left:2px solid var(--dawn2); padding-left:24px; }
+.stand-stare p{ font-family:'Bricolage Grotesque',sans-serif; font-weight:500; font-style:italic; font-size:clamp(1.3rem,2.4vw,1.8rem); line-height:1.35; }
+.stand-stare cite{ display:block; margin-top:10px; font-family:'Red Hat Mono',monospace; font-style:normal; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+
+/* ================= MEDIA SLOTS ================= */
+.media-wide{ margin:36px 0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:rgba(255,255,255,.6); position:relative; }
+.media-wide img{ display:block; width:100%; height:auto; }
+.media-wide .media-tag{ position:absolute; left:14px; bottom:12px; font-size:10px; letter-spacing:.08em; text-transform:uppercase; background:var(--ink); color:var(--paper); padding:5px 10px; border-radius:6px; }
+.media-wide.empty{ aspect-ratio:16/7; display:flex; align-items:center; justify-content:center; }
+.media-wide.empty .media-tag{ position:static; background:transparent; color:var(--muted); border:1px dashed var(--line); }
+
+.shots{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:38px 0 0; }
+@media (max-width:760px){ .shots{ grid-template-columns:1fr; max-width:320px; margin-inline:auto; } }
+.shot{ margin:0; }
+.shot img{ display:block; width:100%; aspect-ratio:9/19; object-fit:cover; border-radius:22px; border:1.5px solid var(--ink); }
+.shot.empty::before{ content:''; display:block; width:100%; aspect-ratio:9/19; border-radius:22px; border:1.5px dashed var(--line); background:linear-gradient(160deg, rgba(255,255,255,.65), rgba(244,241,234,.3)); }
+.shot figcaption{ margin-top:10px; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:center; }
+
+/* ================= INDEX ROWS ================= */
+.idx{ border-top:1px solid var(--line); margin-top:30px; }
+.idx-row{
+  display:grid; grid-template-columns:1.1fr .95fr 1.9fr auto; gap:18px; align-items:baseline;
+  padding:17px 4px; border-bottom:1px solid var(--line);
+  transition:background .18s;
+}
+.idx-row:hover{ background:rgba(255,255,255,.55); }
+.i-org{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:1.02rem; }
+.i-role{ font-size:11px; color:var(--muted); }
+.i-line{ font-size:14.5px; line-height:1.5; color:var(--muted); }
+.i-num{ font-size:11px; color:var(--blue); white-space:nowrap; justify-self:end; }
+@media (max-width:860px){
+  .idx-row{ grid-template-columns:1fr auto; gap:6px 14px; }
+  .i-role{ order:3; } .i-line{ order:4; grid-column:1/-1; }
+}
+
+/* ================= TRIPTYCH ================= */
+.trip{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:36px; }
+@media (max-width:860px){ .trip{ grid-template-columns:1fr; } }
+.trip-col{ border:1px solid var(--line); border-radius:14px; padding:24px; background:rgba(255,255,255,.55); }
+.trip-col h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:14px; }
+.trip-col ul{ list-style:none; }
+.trip-col li{ font-size:14px; line-height:1.55; color:var(--muted); padding:5px 0 5px 16px; position:relative; }
+.trip-col li::before{ content:'·'; position:absolute; left:2px; color:var(--blue); font-weight:700; }
+.trip-quote{ margin-top:16px; font-family:'Bricolage Grotesque',sans-serif; font-style:italic; font-size:.98rem; color:var(--ink); }
+
+/* ================= REVEAL ================= */
+.js .rv{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s cubic-bezier(.3,.6,.2,1); }
+.js .rv.is-inview{ opacity:1; transform:none; }
+.js .hero-name, .js .hero-role, .js .avail-chip, .js .scroll-cue{ opacity:0; animation:rise .8s cubic-bezier(.3,.6,.2,1) forwards; }
+.js .hero-eyebrow{ opacity:0; animation:rise .8s cubic-bezier(.3,.6,.2,1) forwards; animation-delay:.02s; }
+.js .hero-name{ animation-delay:.12s; } .js .hero-role{ animation-delay:.32s; }
+.js .avail-chip{ animation-delay:.46s; } .js .scroll-cue{ animation-delay:.66s; }
+@keyframes rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation-duration:.001s !important; animation-delay:0s !important; transition-duration:.001s !important; }
+  .js .rv, .js .hero-name, .js .hero-role, .js .avail-chip, .js .scroll-cue, .js .hero-eyebrow{ opacity:1; animation:none; transform:none; }
+  #sky{ background:var(--paper) !important; }
+  #stars{ opacity:0 !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="sky" aria-hidden="true"></div>
+<svg id="stars" aria-hidden="true" width="0" height="0"><defs></defs></svg>
+<div id="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="container">
+    <span class="nav-mark" aria-hidden="true"></span>
+    <ul class="nav-links">
+      <li><a href="#now">Now</a></li>
+      <li><a href="#night">Story</a></li>
+      <li><a href="#index">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-avail"><span class="dot"></span>Duke MEnM &rsquo;27</span>
+  </div>
+</nav>
+
+<!-- ═══════ ACT I — HERO ═══════ -->
+<header id="hero">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+    <span class="eyebrow hero-eyebrow">AI Product Manager @ AxNano &middot; Duke MEnM &middot; Durham, NC</span>
+    <h1 class="hero-name">Vedant Lakhani</h1>
+    <p class="hero-role">Product Manager — <b>making invisible things impossible to ignore.</b></p>
+    <span class="avail-chip"><span class="dot"></span>Graduating May 2027 — open to PM roles</span>
+    <span class="scroll-cue"><span class="bar"></span>Keep scrolling</span>
+  </div>
+</header>
+
+<main>
+<!-- ═══════ ACT 01 — THE WINDOW ═══════ -->
+<section id="window" class="scene">
+  <div class="container">
+    <div class="scene-inner rv">
+      <span class="eyebrow kicker">01 — The Window</span>
+      <h2>The desk always faces the window.</h2>
+      <p class="lede">In Mumbai, his study table faced a window, and the window faced the night sky.
+      He watched one view for fifteen years like a time series: the open ground filled in, a tower
+      went up, the air index climbed. He was taking notes before he knew what they were for.</p>
+    </div>
+
+    <div class="window-frame rv">
+      <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The view from one window over the years: buildings rise over an open ground while an air-quality line climbs.">
+        <!-- night sky through the window -->
+        <circle cx="560" cy="60" r="16" fill="none" stroke="#14120F" stroke-width="1.2"/>
+        <circle cx="470" cy="40" r="1.6" fill="#14120F"/><circle cx="510" cy="90" r="1.3" fill="#14120F"/><circle cx="600" cy="105" r="1.3" fill="#14120F"/>
+        <!-- ground -->
+        <line x1="0" y1="300" x2="640" y2="300" stroke="#14120F" stroke-width="1.4"/>
+        <!-- the early view: low, open -->
+        <path d="M30 300 q14 -22 28 0" fill="none" stroke="#14120F" stroke-width="1.1"/>
+        <path d="M74 300 q11 -17 22 0" fill="none" stroke="#14120F" stroke-width="1.1"/>
+        <rect x="120" y="272" width="52" height="28" fill="none" stroke="#14120F" stroke-width="1.1"/>
+        <!-- the view filling in, year by year -->
+        <rect class="grow" x="210" y="240" width="46" height="60" fill="none" stroke="#14120F" stroke-width="1.2" style="transition-delay:.15s"/>
+        <rect class="grow" x="272" y="205" width="52" height="95" fill="none" stroke="#14120F" stroke-width="1.2" style="transition-delay:.35s"/>
+        <rect class="grow" x="340" y="160" width="58" height="140" fill="none" stroke="#14120F" stroke-width="1.2" style="transition-delay:.55s"/>
+        <rect class="grow" x="414" y="120" width="64" height="180" fill="none" stroke="#14120F" stroke-width="1.2" style="transition-delay:.75s"/>
+        <line class="grow" x1="446" y1="120" x2="446" y2="96" stroke="#14120F" stroke-width="1.2" style="transition-delay:.95s"/>
+        <!-- the line that kept climbing -->
+        <polyline class="aqi" points="20,268 120,262 210,250 300,228 400,196 500,168 620,132" fill="none" stroke="#F0895B" stroke-width="2" stroke-linecap="round"/>
+        <text x="20" y="252" font-family="Red Hat Mono, monospace" font-size="11" letter-spacing=".08em" fill="#C1502E">AQI</text>
+      </svg>
+    </div>
+    <p class="fig-cap rv">One window, ~15 years, Mumbai. <b>The view was a dataset before he knew the word.</b>
+    In Durham today the bed sits in the wrong corner of the room — so the desk can face the window.</p>
+
+    <blockquote class="stand-stare rv">
+      <p>&ldquo;What is this life if, full of care,<br/>we have no time to stand and stare.&rdquo;</p>
+      <cite>— W.&thinsp;H. Davies, &ldquo;Leisure&rdquo;</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════ ACT 02 — NOW · AXNANO ═══════ -->
+<section id="now" class="scene">
+  <div class="container">
+    <div class="scene-inner wide rv">
+      <span class="eyebrow kicker">02 — Now · AxNano, Research Triangle</span>
+      <h2>Right now: making PFAS destruction cheap enough to scale.</h2>
+      <p class="lede">AxNano destroys &ldquo;forever chemicals&rdquo; with supercritical water. Vedant met
+      them through a Duke course, built the MVP that won the room, and was hired back as the
+      <b>AI product manager</b>. Two of his systems are in production use today.</p>
+    </div>
+
+    <div class="media-wide rv">
+      <img src="assets/axoptimise.png" alt="AxOptimise operator dashboard" onerror="this.parentElement.classList.add('empty'); this.remove();" />
+      <span class="media-tag mono">AxOptimise — operator dashboard</span>
+    </div>
+
+    <div class="deck rv">
+      <div class="deck-card">
+        <span class="tag">Smart Feed · shipped</span>
+        <h3>A blending plan in under sixty seconds.</h3>
+        <p>A Python optimization engine behind a five-tab operator dashboard: waste manifest in,
+        chemistry-checked blending plan out. <b>47% lower batch costs</b>, diesel eliminated in
+        validated runs — feed planning went from hours to a click. DoD and Air Force are the
+        target customers.</p>
+      </div>
+      <div class="deck-card">
+        <span class="tag">Project Memory OS · in production</span>
+        <h3>A $1M pilot that answers questions.</h3>
+        <p>An AI-native memory system for a <b>five-organization industrial pilot</b> — every email,
+        decision, and open issue lands in a schema-enforced knowledge base. It has already surfaced
+        a critical process deviation and <b>three blocking dependencies</b> before they hit the schedule.</p>
+      </div>
+    </div>
+
+    <div id="fig-mol" class="rv">
+      <svg viewBox="0 0 640 130" role="img" aria-label="A carbon-fluorine chain coming apart, one bond at a time">
+        <text x="120" y="20">F</text><text x="190" y="20">F</text><text x="260" y="20">F</text><text x="330" y="20">F</text><text x="400" y="20">F</text><text x="470" y="20">F</text>
+        <line class="cf" x1="120" y1="28" x2="120" y2="52"/><line class="cf" x1="190" y1="28" x2="190" y2="52"/><line class="cf" x1="260" y1="28" x2="260" y2="52"/><line class="cf" x1="330" y1="28" x2="330" y2="52"/><line class="cf" x1="400" y1="28" x2="400" y2="52"/><line class="cf" x1="470" y1="28" x2="470" y2="52"/>
+        <text x="120" y="68">C</text><text x="190" y="68">C</text><text x="260" y="68">C</text><text x="330" y="68">C</text><text x="400" y="68">C</text><text x="470" y="68">C</text>
+        <line class="cc" x1="132" y1="64" x2="178" y2="64"/><line class="cc" x1="202" y1="64" x2="248" y2="64"/><line class="cc" x1="272" y1="64" x2="318" y2="64"/><line class="cc" x1="342" y1="64" x2="388" y2="64"/><line class="cc" x1="412" y1="64" x2="458" y2="64"/>
+        <line class="snap" x1="150" y1="76" x2="160" y2="52"/><line class="snap" x1="220" y1="76" x2="230" y2="52"/><line class="snap" x1="290" y1="76" x2="300" y2="52"/><line class="snap" x1="360" y1="76" x2="370" y2="52"/><line class="snap" x1="430" y1="76" x2="440" y2="52"/>
+        <line class="cf" x1="120" y1="76" x2="120" y2="100"/><line class="cf" x1="190" y1="76" x2="190" y2="100"/><line class="cf" x1="260" y1="76" x2="260" y2="100"/><line class="cf" x1="330" y1="76" x2="330" y2="100"/><line class="cf" x1="400" y1="76" x2="400" y2="100"/><line class="cf" x1="470" y1="76" x2="470" y2="100"/>
+        <text x="120" y="116">F</text><text x="190" y="116">F</text><text x="260" y="116">F</text><text x="330" y="116">F</text><text x="400" y="116">F</text><text x="470" y="116">F</text>
+      </svg>
+    </div>
+    <p class="fig-cap rv">Carbon&ndash;fluorine bonds — the strongest single bonds in organic chemistry.
+    <b>Your scroll just performed the oxidation.</b></p>
+  </div>
+</section>
+
+<!-- ═══════ ACT III — NIGHT / PROPHECY ═══════ -->
+<section id="night" class="scene on-dark">
+  <div class="container">
+    <div class="scene-inner rv">
+      <span class="eyebrow kicker">03 — The Prophecy</span>
+      <h2>November 2024. He wrote down what he intended to exist.</h2>
+      <p class="lede">Not a plan — a spec, filed inside a graduate application. He had been circling
+      it for years: at Barclays he had already built the bank&rsquo;s first travel-emissions carbon
+      tracker. The seeds were old. The night he wrote them down, they got a deadline.</p>
+    </div>
+
+    <div class="constellation rv">
+      <svg viewBox="0 0 640 210" role="img" aria-label="A constellation tracing his path: Mumbai until 2022, Pune 2022 to 2025, Durham since 2025">
+        <circle class="star" cx="140" cy="40" r="1.4"/><circle class="star" cx="420" cy="30" r="1.4"/><circle class="star" cx="600" cy="60" r="1.4"/><circle class="star" cx="20" cy="60" r="1.4"/><circle class="star" cx="230" cy="150" r="1.4"/><circle class="star" cx="500" cy="180" r="1.4"/>
+        <path class="path" pathLength="100" d="M70 120 L300 60 L560 130"/>
+        <circle class="star" cx="70" cy="120" r="3.4"/><circle class="star" cx="300" cy="60" r="3.4"/><circle class="star" cx="560" cy="130" r="3.4"/>
+        <circle cx="560" cy="130" r="9" fill="none" stroke="#FFB25A" stroke-width="1" opacity=".7"/>
+        <text x="55" y="152">MUMBAI</text><text x="55" y="168" fill="#6B7399">&rsquo;00&ndash;&rsquo;22</text>
+        <text x="284" y="38">PUNE</text><text x="284" y="22" fill="#6B7399">&rsquo;22&ndash;&rsquo;25</text>
+        <text x="532" y="162">DURHAM</text><text x="532" y="178" fill="#FFB25A">&rsquo;25 — now</text>
+      </svg>
+    </div>
+
+    <div class="doc-card rv">
+      <div class="doc-head"><span>Graduate Application — Statement of Purpose</span><b>NOV 2024</b></div>
+      <p>&ldquo;In the long term, I plan to launch a startup focused on
+      <span class="redline">real-time carbon tracking</span> and offset systems. The platform will
+      monitor emissions and provide users with personalized strategies to reduce their carbon footprint.&rdquo;</p>
+    </div>
+
+    <div class="tick rv" aria-hidden="true">
+      <svg viewBox="0 0 640 60" preserveAspectRatio="xMidYMid meet">
+        <line class="tr-line" x1="10" y1="30" x2="630" y2="30"/>
+        <text x="10" y="52">NOV 2024</text><text x="630" y="52" text-anchor="end">NOV 2025</text>
+        <text class="tr-word" x="320" y="16" text-anchor="middle">twelve months</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ACT 04 — DAWN · VERIDIAN ═══════ -->
+<section id="dawn" class="scene">
+  <div class="container">
+    <div class="scene-inner wide rv">
+      <span class="eyebrow kicker">04 — Dawn · Veridian, Founder</span>
+      <h2>Twelve months later, he founded it.</h2>
+      <p class="lede">Veridian shipped in November 2025 — a carbon tracker with <b>10 Claude API
+      functions</b> that read your day and suggest one change. EPA/DEFRA-anchored math, 14 screens,
+      a 15-section PRD, and a gamification loop — Green Points, streaks, 16 achievements — with
+      <b>WAU-3 as the north star</b>. Real and shipped, not roadmap.</p>
+    </div>
+
+    <div class="shots rv">
+      <figure class="shot">
+        <img src="assets/veridian-1.png" alt="Veridian — home screen" onerror="this.parentElement.classList.add('empty'); this.remove();" />
+        <figcaption class="mono">01 · today&rsquo;s footprint</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/veridian-2.png" alt="Veridian — AI suggestion" onerror="this.parentElement.classList.add('empty'); this.remove();" />
+        <figcaption class="mono">02 · one suggested change</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/veridian-3.png" alt="Veridian — achievements" onerror="this.parentElement.classList.add('empty'); this.remove();" />
+        <figcaption class="mono">03 · the streak</figcaption>
+      </figure>
+    </div>
+    <p class="fig-cap rv"><b>The same invisible thing, third attempt:</b> corporate carbon at Barclays,
+    industrial costs at AxNano, personal footprint here. Carbon has no voice. He gives it one.</p>
+  </div>
+</section>
+
+<!-- ═══════ 05 — THE LEDGER · BARCLAYS ═══════ -->
+<section id="ledger-act" class="scene">
+  <div class="container">
+    <div class="scene-inner wide rv">
+      <span class="eyebrow kicker">05 — The Ledger · Barclays PLC, Pune · 2022&ndash;25</span>
+      <h2>He stopped making dashboards. He started making products.</h2>
+      <p class="lede">Three years inside a global bank. His &ldquo;Keeping the Lights On&rdquo;
+      dashboard ran <b>live every two hours for 20+ teams across four countries</b>, unifying six
+      data sources. He co-founded the bank&rsquo;s internal Tableau community, built the
+      propensity-score dashboard that told the bid team <em>which</em> customers to call — and built
+      Barclays&rsquo; first travel-emissions tracker, two years before Veridian. Promoted in just
+      over a year.</p>
+    </div>
+
+    <div class="ledger rv">
+      <div class="lrow"><span>Exhibit</span><span>Barclays, 2022&ndash;25</span></div>
+      <div class="lrow"><span>ETL workflows migrated, Hadoop &rarr; AWS</span><span class="lv">130+</span></div>
+      <div class="lrow"><span>Reporting overhead — four dashboards unified</span><span class="lv">&minus;60%</span></div>
+      <div class="lrow"><span>Platform penetration, six analytics tools</span><span class="lv">+35%</span></div>
+      <div class="lrow"><span>Manual reporting automated — hours freed monthly</span><span class="lv">50+</span></div>
+      <div class="lrow total"><span>Balance, annualized</span><span class="lv">£500,000</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 06 — THE INDEX ═══════ -->
+<section id="index" class="scene">
+  <div class="container">
+    <div class="scene-inner wide rv">
+      <span class="eyebrow kicker">06 — The Index</span>
+      <h2>Everything else that shipped.</h2>
+    </div>
+
+    <div class="idx rv">
+      <div class="idx-row">
+        <span class="i-org">Duke Community Affairs</span>
+        <span class="i-role mono">Product Manager · Oct 25&ndash;Apr 26</span>
+        <span class="i-line">AI-personalized intern onboarding — ramp-up cut from two weeks to three days.</span>
+        <span class="i-num mono">15 interns</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">Credain Networks</span>
+        <span class="i-role mono">PM Intern · 2022</span>
+        <span class="i-line">Cross-border payments MVP on a netting model; rebuilt it in three days after a pre-demo failure.</span>
+        <span class="i-num mono">3 pilot clients</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">Tableau</span>
+        <span class="i-role mono">Student Ambassador · 2022&ndash;23</span>
+        <span class="i-line">Ran five workshops for 100+ professionals while still a student.</span>
+        <span class="i-num mono">1 of 34 worldwide</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">IEEE</span>
+        <span class="i-role mono">Published author</span>
+        <span class="i-line">Personality prediction from 8,675 tweets — MBTI, TF-IDF, XGBoost.</span>
+        <span class="i-num mono">paper</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">Blue Eye Soft</span>
+        <span class="i-role mono">Intern · 2020</span>
+        <span class="i-line">3D solar system on NASA data in Unreal Engine; DefTech hackathon, Azerbaijan.</span>
+        <span class="i-num mono">space tech</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">DeepBlue Hackathon</span>
+        <span class="i-role mono">Team lead</span>
+        <span class="i-line">Air-quality &times; demographics visualization for Mumbai&rsquo;s M-Ward; official data via an RTI filed in three days.</span>
+        <span class="i-num mono">advanced</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">Duke University</span>
+        <span class="i-role mono">MEnM · 2025&ndash;27</span>
+        <span class="i-line">Managing AI in Business · Design Climate · Design Thinking. General Secretary, MEM PM Club.</span>
+        <span class="i-num mono">3.92 GPA</span>
+      </div>
+      <div class="idx-row">
+        <span class="i-org">University of Mumbai</span>
+        <span class="i-role mono">B.E. Computer Engineering</span>
+        <span class="i-line">Hit a first-year backlog, fought through it — then mentored seven juniors facing the same wall.</span>
+        <span class="i-num mono">7 mentored</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 07 — THE PATTERN ═══════ -->
+<section id="pattern" class="scene">
+  <div class="container">
+    <div class="scene-inner wide rv">
+      <span class="eyebrow kicker">07 — The Pattern</span>
+      <h2>He builds for problems people haven&rsquo;t named yet.</h2>
+    </div>
+
+    <div class="trip rv">
+      <div class="trip-col">
+        <h3>Invisible carbon</h3>
+        <ul>
+          <li>Barclays&rsquo; first T&amp;E emissions tracker</li>
+          <li>Veridian — a footprint you can feel</li>
+          <li>AxNano — destruction costs, quantified</li>
+        </ul>
+        <p class="trip-quote">&ldquo;Carbon has no voice. I give it one.&rdquo;</p>
+      </div>
+      <div class="trip-col">
+        <h3>Invisible friction</h3>
+        <ul>
+          <li>A ten-year-old manual reporting process, automated</li>
+          <li>Onboarding that wasted 30% of ramp-up time</li>
+          <li>Six siloed data sources for one global director</li>
+        </ul>
+        <p class="trip-quote">&ldquo;Friction is invisible, until you measure it.&rdquo;</p>
+      </div>
+      <div class="trip-col">
+        <h3>Invisible users</h3>
+        <ul>
+          <li>Air-quality data residents couldn&rsquo;t access</li>
+          <li>Personality patterns hidden in 8,675 tweets</li>
+          <li>Community needs nobody was tracking</li>
+        </ul>
+        <p class="trip-quote">&ldquo;Every user deserves to be seen.&rdquo;</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ═══════ ACT V — CONTACT ═══════ -->
+<footer id="contact">
+  <div class="container">
+    <h2 class="contact-head rv">Let's build <em>something.</em></h2>
+    <p class="contact-sub rv">AI PM at AxNano now; graduating Duke in May 2027 — open to product roles.
+    Durham, NC — happy to relocate.</p>
+    <div class="contact-links rv">
+      <a href="mailto:vedant.lakhani@duke.edu">Email</a>
+      <a href="https://www.linkedin.com/in/vedantlakhani" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/vedantlakhani" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://public.tableau.com/app/profile/vedant.lakhani/vizzes" target="_blank" rel="noopener">Tableau</a>
+      <a href="Vedant_Lakhani_Resume.pdf" download>Résumé</a>
+    </div>
+
+    <div class="signoff rv" id="signoff" tabindex="0" aria-label="Vedant Lakhani — hover or focus to see it in reverse">
+      <span class="rev" id="signoff-text">Vedant Lakhani</span>
+    </div>
+    <p class="quiet-line rv">&ldquo;Arise, awake, and stop not till the goal is reached.&rdquo; — Vivekananda. Live and let live.</p>
+
+    <div class="foot-line rv">
+      <span>&copy; 2026 Vedant Lakhani</span>
+      <span id="clock">Durham, NC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduced = false;
+  try{ reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  function safe(fn){ try{ fn(); }catch(e){} }
+  var hasIO = 'IntersectionObserver' in window;
+
+  if (!hasIO){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('is-inview'); }); }
+
+  safe(function(){
+    if (!hasIO) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('is-inview'); io.unobserve(en.target); } });
+    }, { threshold:0.14, rootMargin:'0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  });
+
+  safe(function(){
+    var clockEl = document.getElementById('clock');
+    if (!clockEl) return;
+    function tick(){
+      try{
+        var t = new Intl.DateTimeFormat('en-US', { timeZone:'America/New_York', hour:'2-digit', minute:'2-digit', hour12:false }).format(new Date());
+        clockEl.textContent = 'Durham, NC — ' + t + ' ET';
+      }catch(e){ clockEl.textContent = 'Durham, NC'; }
+    }
+    tick(); setInterval(tick, 30000);
+  });
+
+  /* ── the reverse-text easter egg ── */
+  safe(function(){
+    var el = document.getElementById('signoff-text');
+    if (!el) return;
+    var normal = el.textContent;
+    var reversed = normal.split('').reverse().join('');
+    var on = false;
+    function set(rev){ el.textContent = rev ? reversed : normal; }
+    el.addEventListener('mouseenter', function(){ set(true); });
+    el.addEventListener('mouseleave', function(){ set(false); });
+    el.addEventListener('focus', function(){ set(true); });
+    el.addEventListener('blur', function(){ set(false); });
+  });
+
+  /* ── the sky: continuous day → night → dawn → day gradient tied to scroll ── */
+  safe(function(){
+    var sky = document.getElementById('sky');
+    var starsWrap = document.getElementById('stars');
+    var navEl = document.querySelector('nav');
+    if (!sky) return;
+    if (reduced){ return; } /* static paper background is the correct reduced-motion state */
+
+    var nightEl = document.getElementById('night');
+    var dawnEl = document.getElementById('dawn');
+    if (!nightEl || !dawnEl) return;
+
+    function lerpRGB(c1,c2,t){ return [c1[0]+(c2[0]-c1[0])*t, c1[1]+(c2[1]-c1[1])*t, c1[2]+(c2[2]-c1[2])*t]; }
+    function toCss(rgb){ return 'rgb(' + Math.round(rgb[0]) + ',' + Math.round(rgb[1]) + ',' + Math.round(rgb[2]) + ')'; }
+    function clamp01(v){ return Math.max(0, Math.min(1, v)); }
+    var DAY = [244,241,234], NIGHT = [12,17,48], DAWN = [240,137,91];
+
+    /* absolute page-Y offsets — far more robust than diffing two elements'
+       live bounding rects against each other every frame. Recomputed on
+       resize and once webfonts finish loading, since a font swap reflows
+       the large display headings and would otherwise leave these stale. */
+    var nightStart = nightEl.offsetTop;
+    var dawnStart = dawnEl.offsetTop;
+    function remeasure(){ nightStart = nightEl.offsetTop; dawnStart = dawnEl.offsetTop; }
+
+    var rafId = null;
+    function paint(){
+      rafId = null;
+      var vh = window.innerHeight;
+      var y = window.scrollY + vh * 0.5; /* the "playhead" — viewport center on the page */
+
+      /* three sequential, non-overlapping transition bands */
+      var t1 = clamp01((y - (nightStart - vh)) / vh);            /* day  -> night, one viewport before night starts */
+      var t2 = clamp01((y - (dawnStart - vh*0.3)) / (vh*0.6));   /* night -> dawn, a short punchy sunrise at the seam */
+      var t3 = clamp01((y - (dawnStart + vh*0.3)) / vh);         /* dawn -> day, resolves within ~1 viewport, then holds */
+
+      var rgb = DAY;
+      rgb = lerpRGB(rgb, NIGHT, t1);
+      rgb = lerpRGB(rgb, DAWN, t2);
+      rgb = lerpRGB(rgb, DAY, t3);
+
+      sky.style.background = toCss(rgb);
+      if (navEl){
+        navEl.style.background = 'rgba(' + Math.round(rgb[0]) + ',' + Math.round(rgb[1]) + ',' + Math.round(rgb[2]) + ',.72)';
+        var luminance = (rgb[0]*0.299 + rgb[1]*0.587 + rgb[2]*0.114);
+        navEl.classList.toggle('on-dark', luminance < 130);
+      }
+
+      var starOpacity = t1 * (1 - t2) + Math.max(0, t1 - t2) * 0; /* stars: in during night, gone by the dawn blend */
+      starOpacity = clamp01(t1 - t2);
+      starsWrap.style.opacity = String(clamp01(starOpacity) * .9);
+    }
+    function onScroll(){ if (!rafId) rafId = requestAnimationFrame(paint); }
+    function onResize(){ remeasure(); onScroll(); }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onResize);
+    if (document.fonts && document.fonts.ready){ document.fonts.ready.then(onResize).catch(function(){}); }
+    paint();
+  });
+
+  /* ── AxNano molecule: scroll breaks the bonds, irreversibly ── */
+  safe(function(){
+    var mol = document.getElementById('fig-mol');
+    if (!mol) return;
+    var snaps = mol.querySelectorAll('.snap');
+    var bonds = mol.querySelectorAll('.cc');
+    if (reduced || !hasIO){
+      snaps.forEach(function(s){ s.classList.add('on'); });
+      bonds.forEach(function(b){ b.classList.add('broken'); });
+      return;
+    }
+    var rafId = null, maxBroken = 0;
+    function oxidize(){
+      rafId = null;
+      var r = mol.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var p = (vh - r.top) / (r.height + vh * 0.6);
+      p = Math.max(0, Math.min(1, p));
+      var broken = Math.floor(p * (snaps.length + 1));
+      if (broken <= maxBroken) return;
+      maxBroken = broken;
+      snaps.forEach(function(s,i){ s.classList.toggle('on', i < broken); });
+      bonds.forEach(function(b,i){ b.classList.toggle('broken', i < broken); });
+      if (maxBroken >= snaps.length) window.removeEventListener('scroll', onScroll);
+    }
+    function onScroll(){ if (!rafId) rafId = requestAnimationFrame(oxidize); }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    oxidize();
+  });
+
+  /* ── constellation: draws once on scroll into view ── */
+  safe(function(){
+    var path = document.querySelector('.constellation .path');
+    if (!path) return;
+    if (!hasIO){ path.style.strokeDashoffset = '0'; return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          en.target.style.transition = reduced ? 'none' : 'stroke-dashoffset 1.4s cubic-bezier(.3,.6,.2,1)';
+          en.target.style.strokeDashoffset = '0';
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold:0.5 });
+    io.observe(path);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,19 @@
 .claude/
 .DS_Store
+**/.DS_Store
+
+# --- PRIVATE / CONFIDENTIAL — must never reach the public repo ---
+# AxNano internal engineering docs (algorithm, calibration constants, data formats)
+assets/README.md
+# Personal career workspace: profile, mentor transcripts, resume drafts, outreach
+assets/Life & Career OS/
+# Personal narrative deck
 assets/Vedant Lakhani.pdf
+
+# --- local scratch / design experiments ---
+.design-refs/
+preview-dark.html
+preview-light.html
 index-v1-backup.html
 index-galley-proof-v2.html
 index-bento-v3.html

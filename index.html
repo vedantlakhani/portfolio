@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vedant Lakhani — Product Manager</title>
-<meta name="description" content="Vedant Lakhani. AI product manager at AxNano, founder of Veridian. Every number on this page shows its source. Open to Summer 2026 PM roles." />
+<title>Vedant Lakhani, Product Manager</title>
+<meta name="description" content="Vedant Lakhani. Product manager at AxNano, founder of Veridian. Open to Summer 2026 PM roles." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23EDEAE4'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%232338CE'/%3E%3C/svg%3E" />
 <script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,16 +13,17 @@
 <style>
 /* ================================================================
    Light, text-first, editorial. One typeface carries the hierarchy.
-   One accent, used structurally — never decoratively.
+   One accent, used structurally, never decoratively.
    Every metric carries its provenance. Single file, no build step.
+   Equal weight across chapters. No em dashes anywhere in copy.
    ================================================================ */
 :root{
   --paper:#EDEAE4;
   --card:#FAF9F6;
   --ink:#141416;
   --ink2:#3A3A3E;
-  --muted:#605D57;  /* 5.46:1 on paper — AA */
-  --faint:#6E6A60;  /* 4.49:1 on paper — AA; carries dates, roles, labels */
+  --muted:#605D57;
+  --faint:#6E6A60;
   --line:#DCD7CD;
   --line2:#C9C3B6;
   --accent:#2338CE;
@@ -87,7 +88,6 @@ h1.name{
 .hero-meta a.solid{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
 .hero-meta a.solid:hover{ background:var(--accent); border-color:var(--accent); }
 
-/* the accent as a graphic shape, not a button color */
 .hero-aside{ position:relative; }
 .disc{
   position:absolute; right:-30px; top:-104px; width:186px; height:186px; border-radius:50%;
@@ -97,7 +97,7 @@ h1.name{
 .now-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
 .now-card h3{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--faint); font-weight:400; }
 .now-list{ list-style:none; margin-top:12px; }
-.now-list li{ font-size:14px; line-height:1.45; padding:9px 0; border-top:1px solid var(--line); color:var(--muted); }
+.now-list li{ font-size:15px; line-height:1.5; padding:9px 0; border-top:1px solid var(--line); color:var(--muted); }
 .now-list li:first-child{ border-top:none; padding-top:0; }
 .now-list li b{ color:var(--ink); font-weight:600; }
 
@@ -122,49 +122,49 @@ h1.name{
   opacity:1; visibility:visible; transform:none;
 }
 @media (max-width:680px){ .pv-pop{ max-width:min(272px,66vw); } }
-/* right-column metrics must open leftward or they clip off-screen */
 @media (max-width:760px){ .proof-row > div:nth-child(even) .pv-pop{ left:auto; right:0; } }
 
 /* ---------- PROOF STRIP ---------- */
 #proof{ border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); padding:clamp(24px,4vh,38px) 0; }
 .proof-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,3vw,34px); }
 @media (max-width:760px){ .proof-row{ grid-template-columns:repeat(2,1fr); row-gap:28px; } }
-.pf-val{ font-size:clamp(2rem,4vw,3.1rem); font-weight:700; line-height:1; letter-spacing:-.04em; }
+.pf-val{ font-size:clamp(1.9rem,3.8vw,2.9rem); font-weight:700; line-height:1; letter-spacing:-.04em; }
 .pf-val .u{ font-size:.46em; font-weight:600; letter-spacing:-.02em; color:var(--muted); }
-.pf-key{ display:block; margin-top:10px; font-size:13px; line-height:1.4; color:var(--muted); max-width:22ch; }
+.pf-key{ display:block; margin-top:10px; font-size:13px; line-height:1.4; color:var(--muted); max-width:24ch; }
 
 /* ---------- CASE SCAFFOLD ---------- */
 .case{ padding:clamp(56px,9vh,104px) 0; border-bottom:1px solid var(--line); }
-.case-grid{ display:grid; grid-template-columns:210px minmax(0,1fr); gap:clamp(24px,4vw,64px); align-items:start; }
+.case-grid{ display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(24px,4vw,64px); align-items:start; }
 @media (max-width:940px){ .case-grid{ grid-template-columns:1fr; gap:22px; } }
 .rail{ position:sticky; top:88px; }
 @media (max-width:940px){ .rail{ position:static; } }
 .rail-num{ font-family:var(--mono); font-size:11px; color:var(--accent); }
-.rail-org{ margin-top:8px; font-size:19px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
-.rail-meta{ margin-top:7px; font-family:var(--mono); font-size:11px; color:var(--faint); line-height:1.7; }
+.rail-org{ margin-top:8px; font-size:20px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
+.rail-meta{ margin-top:8px; font-family:var(--mono); font-size:12.5px; color:var(--faint); line-height:1.8; }
 .rail-tag{
-  display:inline-block; margin-top:13px; font-family:var(--mono); font-size:10px; text-transform:uppercase;
-  letter-spacing:.08em; color:var(--muted); border:1px solid var(--line2); border-radius:5px; padding:3px 8px;
+  display:inline-block; margin-top:14px; font-family:var(--mono); font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.08em; color:var(--muted); border:1px solid var(--line2); border-radius:5px; padding:4px 9px;
 }
 
 .case h2{ font-size:clamp(1.6rem,3.2vw,2.5rem); font-weight:700; line-height:1.12; letter-spacing:-.03em; max-width:25ch; }
 .body-col{ max-width:64ch; }
-.body-col p{ margin-top:16px; font-size:16.5px; line-height:1.62; color:var(--ink2); }
+.body-col p{ margin-top:14px; font-size:16.5px; line-height:1.6; color:var(--ink2); }
 .body-col p b{ font-weight:600; color:var(--ink); }
+.body-col a, .dl-row dd a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
 
-/* progressive disclosure */
+/* progressive disclosure, sized up so people actually open it */
 details.more{ margin-top:24px; border-top:1px solid var(--line); }
 details.more summary{
-  list-style:none; cursor:pointer; display:flex; align-items:center; gap:9px; padding-top:15px;
-  font-family:var(--mono); font-size:11.5px; color:var(--accent); user-select:none;
+  list-style:none; cursor:pointer; display:flex; align-items:center; gap:9px; padding:15px 0;
+  font-family:var(--mono); font-size:13px; color:var(--accent); user-select:none;
 }
 details.more summary::-webkit-details-marker{ display:none; }
-details.more summary::after{ content:'+'; font-size:14px; line-height:1; }
-details.more[open] summary::after{ content:'–'; }
+details.more summary::after{ content:'+'; font-size:15px; line-height:1; }
+details.more[open] summary::after{ content:'\2013'; }
 details.more summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
-.dl{ margin-top:14px; padding-bottom:4px; }
-.dl-row{ display:grid; grid-template-columns:140px minmax(0,1fr); gap:16px; padding:12px 0; border-top:1px solid var(--line); font-size:14.5px; line-height:1.55; }
-.dl-row dt{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--faint); padding-top:2px; }
+.dl{ margin-top:6px; padding-bottom:6px; }
+.dl-row{ display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:13px 0; border-top:1px solid var(--line); font-size:15.5px; line-height:1.55; }
+.dl-row dt{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--faint); padding-top:2px; }
 .dl-row dd{ color:var(--ink2); }
 .dl-row dd b{ color:var(--ink); font-weight:600; }
 @media (max-width:600px){ .dl-row{ grid-template-columns:1fr; gap:5px; } }
@@ -188,7 +188,7 @@ details.more summary:focus-visible{ outline:2px solid var(--accent); outline-off
   transition:opacity .45s ease .74s, transform .45s cubic-bezier(.3,.7,.2,1) .74s;
 }
 .correction.is-inview .corr-new{ opacity:1; transform:none; }
-.corr-note{ margin-top:17px; font-size:15px; line-height:1.62; color:var(--ink2); max-width:58ch; }
+.corr-note{ margin-top:17px; font-size:15.5px; line-height:1.6; color:var(--ink2); max-width:58ch; }
 .corr-note b{ font-weight:600; color:var(--ink); }
 html:not(.js) .corr-old::after{ transform:scaleX(1); }
 html:not(.js) .corr-new, html:not(.js) .corr-arrow{ opacity:1; transform:none; }
@@ -198,7 +198,7 @@ html:not(.js) .corr-new, html:not(.js) .corr-arrow{ opacity:1; transform:none; }
 @media (max-width:760px){ .trio{ grid-template-columns:1fr; gap:14px; } }
 .trio-item{ border-top:2px solid var(--ink); padding-top:12px; }
 .trio-v{ font-size:1.7rem; font-weight:700; letter-spacing:-.03em; line-height:1; }
-.trio-l{ margin-top:8px; font-size:13.5px; line-height:1.5; color:var(--muted); }
+.trio-l{ margin-top:8px; font-size:14px; line-height:1.5; color:var(--muted); }
 
 /* ---------- MOLECULE ---------- */
 .mol-fig{ margin-top:34px; }
@@ -209,52 +209,58 @@ html:not(.js) .corr-new, html:not(.js) .corr-arrow{ opacity:1; transform:none; }
 .mol-fig line.cf{ stroke:var(--line2); stroke-width:1.4; }
 .mol-fig .snap{ stroke:var(--accent); stroke-width:2.6; stroke-linecap:round; opacity:0; transition:opacity .3s; }
 .mol-fig .snap.on{ opacity:1; }
-figcaption.cap{ margin-top:14px; font-size:13px; line-height:1.6; color:var(--muted); max-width:62ch; }
+figcaption.cap{ margin-top:14px; font-size:13.5px; line-height:1.6; color:var(--muted); max-width:62ch; }
 figcaption.cap b{ color:var(--ink2); font-weight:600; }
 
-/* ---------- GALLERY WALL ---------- */
+/* ---------- GALLERY WALL, larger so text in-app is readable ---------- */
 .gallery{ margin-top:34px; }
-.gal-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(10px,1.6vw,20px); }
-@media (max-width:900px){ .gal-row{ grid-template-columns:repeat(2,1fr); gap:16px; } }
+.gal-row{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(16px,2.4vw,28px); max-width:640px; }
+@media (max-width:640px){ .gal-row{ grid-template-columns:1fr; max-width:320px; margin-inline:auto; } }
 .shot{ margin:0; }
 .shot .frame{
-  border-radius:18px; overflow:hidden; border:1px solid var(--line2); background:#0d1512;
-  box-shadow:0 14px 34px rgba(20,20,22,.13), 0 2px 6px rgba(20,20,22,.06);
+  border-radius:20px; overflow:hidden; border:1px solid var(--line2); background:#0d1512;
+  box-shadow:0 16px 38px rgba(20,20,22,.15), 0 2px 6px rgba(20,20,22,.07);
   transition:transform .3s cubic-bezier(.3,.7,.2,1), box-shadow .3s;
 }
-.shot:hover .frame{ transform:translateY(-5px); box-shadow:0 22px 46px rgba(20,20,22,.2); }
+.shot:hover .frame{ transform:translateY(-5px); box-shadow:0 24px 50px rgba(20,20,22,.22); }
 .shot img{ width:100%; aspect-ratio:9/19.2; object-fit:cover; object-position:top center; }
-.shot figcaption{ margin-top:11px; font-family:var(--mono); font-size:10.5px; line-height:1.55; color:var(--muted); }
+.shot figcaption{ margin-top:12px; font-family:var(--mono); font-size:11.5px; line-height:1.55; color:var(--muted); }
 .gal-note{ margin-top:22px; font-family:var(--mono); font-size:11.5px; color:var(--faint); line-height:1.6; }
 
-/* ---------- LEDGER ---------- */
-.ledger{ margin-top:28px; border:1px solid var(--line2); border-radius:13px; overflow:hidden; background:var(--card); }
-.lg-row{ display:flex; justify-content:space-between; align-items:baseline; gap:18px; padding:13px 20px; border-top:1px solid var(--line); font-size:15px; color:var(--ink2); }
-.lg-row:first-child{ border-top:none; }
-.lg-row .lv{ font-family:var(--mono); font-size:14px; color:var(--ink); white-space:nowrap; }
-.lg-row.total{ background:var(--accent-soft); font-weight:600; color:var(--ink); border-top:1.5px solid var(--line2); }
-.lg-row.total .lv{ color:var(--accent); font-weight:500; }
+/* ---------- SEPARATE ACHIEVEMENTS LIST (no forced narrative) ---------- */
+.achv{ margin-top:28px; }
+.achv-row{ padding:18px 0; border-top:1px solid var(--line); }
+.achv-row:last-child{ border-bottom:1px solid var(--line); }
+.achv-head{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.achv-name{ font-size:16.5px; font-weight:700; letter-spacing:-.01em; }
+.achv-num{ font-family:var(--mono); font-size:13px; color:var(--accent); white-space:nowrap; }
+.achv-row p{ margin-top:6px; font-size:15px; line-height:1.55; color:var(--muted); max-width:60ch; }
 
 /* ---------- PROJECT CARDS ---------- */
-.pcards{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-@media (max-width:860px){ .pcards{ grid-template-columns:1fr; } }
-.pcard{ background:var(--card); border:1px solid var(--line); border-radius:13px; padding:20px; transition:border-color .2s, transform .2s; }
+.pcards{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+@media (max-width:760px){ .pcards{ grid-template-columns:1fr; } }
+.pcard{ background:var(--card); border:1px solid var(--line); border-radius:13px; padding:22px; transition:border-color .2s, transform .2s; }
 .pcard:hover{ border-color:var(--line2); transform:translateY(-2px); }
-.pcard .pt{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); }
-.pcard h3{ margin-top:10px; font-size:1.06rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; }
-.pcard p{ margin-top:9px; font-size:13.5px; line-height:1.58; color:var(--muted); }
+.pcard .pt{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); }
+.pcard h3{ margin-top:10px; font-size:1.12rem; font-weight:700; letter-spacing:-.02em; line-height:1.25; }
+.pcard p{ margin-top:9px; font-size:14px; line-height:1.55; color:var(--muted); }
+.pcard .pl{ display:inline-block; margin-top:12px; font-family:var(--mono); font-size:11.5px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); }
 
-/* ---------- INDEX ---------- */
+/* ---------- INDEX, fixed alignment, one line each ---------- */
 .idx{ margin-top:30px; border-top:1px solid var(--line2); }
-.idx-row{ display:grid; grid-template-columns:1fr 1fr 2fr auto; gap:16px; align-items:baseline; padding:15px 6px; border-bottom:1px solid var(--line); transition:background .15s; }
+.idx-row{
+  display:grid; grid-template-columns:1fr 1fr auto; gap:18px; align-items:baseline;
+  padding:16px 6px; border-bottom:1px solid var(--line); transition:background .15s;
+}
 .idx-row:hover{ background:var(--card); }
+.ix-left{ display:flex; flex-direction:column; gap:3px; }
 .ix-org{ font-size:15.5px; font-weight:600; letter-spacing:-.015em; }
-.ix-role{ font-family:var(--mono); font-size:11px; color:var(--faint); }
-.ix-line{ font-size:14px; line-height:1.5; color:var(--muted); }
-.ix-num{ font-family:var(--mono); font-size:11.5px; color:var(--accent); white-space:nowrap; justify-self:end; }
-@media (max-width:860px){
-  .idx-row{ grid-template-columns:1fr auto; gap:5px 14px; }
-  .ix-role{ order:3; } .ix-line{ order:4; grid-column:1/-1; }
+.ix-role{ font-family:var(--mono); font-size:11.5px; color:var(--faint); }
+.ix-line{ font-size:14.5px; line-height:1.4; color:var(--muted); text-align:left; }
+.ix-num{ font-family:var(--mono); font-size:12px; color:var(--accent); white-space:nowrap; text-align:right; }
+@media (max-width:760px){
+  .idx-row{ grid-template-columns:1fr auto; }
+  .ix-line{ grid-column:1/-1; margin-top:4px; }
 }
 
 /* ---------- CONTACT ---------- */
@@ -308,8 +314,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
       <div>
         <span class="avail"><span class="live" aria-hidden="true"></span>Open to Summer 2026 PM roles</span>
         <h1 class="name">Vedant Lakhani</h1>
-        <p class="tagline">Product manager. I build AI-native tools for physical problems — and
-        <b>every number on this page shows its source.</b></p>
+        <p class="tagline">Product manager. <b>I leave things better than I found them.</b> Even my own work.</p>
         <div class="hero-meta">
           <a class="solid" href="#axnano">See the work</a>
           <a href="Vedant_Lakhani_Resume.pdf" download>Résumé (PDF)</a>
@@ -322,9 +327,9 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
         <div class="now-card">
           <h3>Currently</h3>
           <ul class="now-list">
-            <li><b>AI Product Manager</b> — AxNano, a PFAS-destruction startup in the Research Triangle</li>
-            <li><b>Founder</b> — Veridian, a carbon tracker built around automatic detection</li>
-            <li><b>Duke MEnM &rsquo;27</b> — Pratt School of Engineering, Durham NC</li>
+            <li><b>Product Manager Intern</b> at AxNano, a PFAS destruction startup in the Research Triangle</li>
+            <li><b>Founder</b> of Veridian, an app that shows people their real environmental impact without them lifting a finger</li>
+            <li><b>Duke MEM &rsquo;27</b>, Pratt School of Engineering, Durham NC</li>
           </ul>
         </div>
       </aside>
@@ -336,20 +341,20 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   <div class="wrap">
     <div class="proof-row">
       <div>
-        <div class="pf-val"><span class="m">43<span class="u">%</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 43 percent">&#9702;</button><span class="pv-pop" role="tooltip">AxOptimise batch-cost reduction. Corrected down from 47% after an audit I commissioned; revalidated against 150+ pages of DoD and EPA field reports.</span></span></div>
-        <span class="pf-key">Batch-cost cut, AxOptimise</span>
+        <div class="pf-val"><span class="m">43<span class="u">%</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 43 percent">&#9702;</button><span class="pv-pop" role="tooltip">AxOptimise batch cost reduction. Corrected down from 47% after an audit I commissioned. Revalidated against 150+ pages of DoD and EPA field reports.</span></span></div>
+        <span class="pf-key">Batch cost cut at AxNano</span>
       </div>
       <div>
-        <div class="pf-val"><span class="m"><span class="u">&pound;</span>500<span class="u">K</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 500 thousand pounds">&#9702;</button><span class="pv-pop" role="tooltip">Annualized savings from the Hadoop &rarr; AWS migration business case I authored. Barclays PLC, 2022&ndash;25.</span></span></div>
-        <span class="pf-key">Annualized savings at Barclays</span>
+        <div class="pf-val"><span class="m">12<span class="u">mo</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 12 months">&#9702;</button><span class="pv-pop" role="tooltip">A 2024 grad school essay said I would launch a carbon tracker in the long term. Veridian shipped 12 months later.</span></span></div>
+        <span class="pf-key">Idea to shipped app, Veridian</span>
       </div>
       <div>
-        <div class="pf-val"><span class="m">3<span class="u">/5</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 3 of 5 sprints">&#9702;</button><span class="pv-pop" role="tooltip">Veridian sprints shipped against written exit criteria, verified on real hardware rather than a simulator. Two remain before public launch.</span></span></div>
-        <span class="pf-key">Veridian sprints shipped, exit-criteria gated</span>
+        <div class="pf-val"><span class="m">10<span class="u">+</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 10 plus dashboards">&#9702;</button><span class="pv-pop" role="tooltip">Built for internal teams at Barclays over three years, including a leadership KPI dashboard for six directors and a propensity scoring tool for the bid team.</span></span></div>
+        <span class="pf-key">Dashboards shipped at Barclays</span>
       </div>
       <div>
         <div class="pf-val"><span class="m">3.9<span class="u">/4</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 3.9 GPA">&#9702;</button><span class="pv-pop" role="tooltip">Master of Engineering Management, Duke University, Pratt School of Engineering. Class of 2027.</span></span></div>
-        <span class="pf-key">Duke MEnM, cumulative</span>
+        <span class="pf-key">Duke MEM, cumulative</span>
       </div>
     </div>
   </div>
@@ -357,26 +362,27 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
 
 <main>
 
-<!-- ============ 01 · AXNANO ============ -->
+<!-- ============ 01 AXNANO ============ -->
 <section id="axnano" class="case">
   <div class="wrap">
     <div class="case-grid">
       <div class="rail rv">
-        <div class="rail-num">01 &mdash; Now</div>
+        <div class="rail-num">01</div>
         <div class="rail-org">AxNano</div>
-        <div class="rail-meta">AI Product Manager<br/>Research Triangle, NC<br/>2026 &mdash;</div>
-        <span class="rail-tag">Climate &middot; Industrial</span>
+        <div class="rail-meta">Product Manager Intern<br/>Research Triangle, NC<br/>2026 to present</div>
+        <span class="rail-tag">Climate. Industrial.</span>
       </div>
 
       <div>
         <div class="body-col rv">
           <h2>A blending engine for a reactor that destroys forever chemicals.</h2>
-          <p>AxNano destroys PFAS &mdash; the &ldquo;forever chemicals&rdquo; in drinking water &mdash; using
-          supercritical water oxidation. I came in through a Duke practicum, then joined as product manager.</p>
-          <p>The reactor was being fed one waste stream at a time. I built <b>AxOptimise</b>: a Python
-          optimization engine behind an operator dashboard that blends compatible streams into a single
-          lowest-cost run, subject to real chemistry constraints &mdash; pH, fluoride acid loading,
-          neutralization. It returns a feed plan in under a minute. Planning used to take hours.</p>
+          <p>AxNano destroys PFAS, the forever chemicals in drinking water, using supercritical water oxidation.
+          I joined through a Duke practicum and stayed on as product manager.</p>
+          <p>I built <b>AxOptimise</b>. It blends waste streams into one low cost reactor run instead of
+          processing each stream alone. It returns a feed plan in under a minute. Planning used to take hours.</p>
+          <p class="glimpse">Three things I built here: <b>AxOptimise</b>, the blending engine
+          (<a href="https://github.com/vedantlakhani/Smart_feed_optimizaition_UI" target="_blank" rel="noopener">code</a>).
+          A <b>Memory OS</b> for a five organization pilot. A <b>Company OS</b> that routes questions to the right person.</p>
         </div>
 
         <div class="correction">
@@ -386,24 +392,23 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
             <span class="corr-arrow" aria-hidden="true">&rarr;</span>
             <span class="corr-new">43%</span>
           </div>
-          <p class="corr-note">My first model claimed 47%. Before it reached a customer I commissioned an
-          audit of my own work. It found <b>five defects</b>. I fixed them, revalidated against 150+ pages of
-          DoD and EPA field reports, and published the corrected figure. <b>I still believe 43% is right</b>
-          &mdash; and it&rsquo;s a number I can defend in a room, which the 47% wasn&rsquo;t.</p>
+          <p class="corr-note">My first model claimed 47%. I commissioned an audit before it reached a customer.
+          It found <b>five defects</b>. I fixed them and revalidated against 150+ pages of DoD and EPA field
+          reports. <b>I still stand behind 43%.</b> It is a number I can defend in a room.</p>
         </div>
 
         <div class="trio rv">
           <div class="trio-item">
             <div class="trio-v">5</div>
-            <div class="trio-l">Model defects the audit surfaced &mdash; all fixed before the number shipped.</div>
+            <div class="trio-l">Model defects the audit surfaced. All fixed before the number shipped.</div>
           </div>
           <div class="trio-item">
             <div class="trio-v">150+</div>
             <div class="trio-l">Pages of DoD and EPA field reports the corrected model was validated against.</div>
           </div>
           <div class="trio-item">
-            <div class="trio-v">13 / 6</div>
-            <div class="trio-l">Decisions and open hypotheses tracked in the source-cited Memory OS I also built.</div>
+            <div class="trio-v">2</div>
+            <div class="trio-l">AI systems I also built and run day to day: a Memory OS and a Company OS.</div>
           </div>
         </div>
 
@@ -412,15 +417,19 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
           <dl class="dl">
             <div class="dl-row">
               <dt>Memory OS</dt>
-              <dd>An AI-native project knowledge base for a <b>$1M+ five-organization industrial pilot</b>. Email and decisions land in a schema-enforced store instead of scattered threads. It surfaced a critical process deviation and three blocking dependencies before they hit the schedule.</dd>
+              <dd>A knowledge base for a <b>$1M+ industrial pilot across five organizations</b>. Email and decisions land in a schema-enforced store instead of scattered threads. It now holds 13+ decisions and 6 tracked hypotheses, and 5 teammates use it as the single source of truth.</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Company OS</dt>
+              <dd>A second system mapping the company's own functions and repeated tasks into a single operating layer, wired to the team's existing tools. It routes questions to the person who can actually answer them.</dd>
             </div>
             <div class="dl-row">
               <dt>Next</dt>
-              <dd>Scoping a model that infers waste composition rather than trusting the manifest &mdash; manifests are frequently wrong, which is the real constraint on scheduling.</dd>
+              <dd>A model that reads waste composition directly instead of trusting the manifest. Manifests are frequently wrong. That is the real constraint on scheduling.</dd>
             </div>
             <div class="dl-row">
               <dt>Redacted</dt>
-              <dd>Client names, deployment sites, and internal cost figures are omitted deliberately &mdash; the pilot is under confidentiality. Happy to discuss my role and reasoning directly.</dd>
+              <dd>Client names, deployment sites, and internal cost figures are left out on purpose. The pilot is under confidentiality. Happy to talk through my role and reasoning directly.</dd>
             </div>
           </dl>
         </details>
@@ -435,76 +444,78 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
             <line class="cf" x1="120" y1="76" x2="120" y2="100"/><line class="cf" x1="190" y1="76" x2="190" y2="100"/><line class="cf" x1="260" y1="76" x2="260" y2="100"/><line class="cf" x1="330" y1="76" x2="330" y2="100"/><line class="cf" x1="400" y1="76" x2="400" y2="100"/><line class="cf" x1="470" y1="76" x2="470" y2="100"/>
             <text x="115" y="116">F</text><text x="185" y="116">F</text><text x="255" y="116">F</text><text x="325" y="116">F</text><text x="395" y="116">F</text><text x="465" y="116">F</text>
           </svg>
-          <figcaption class="cap"><b>Fig. 01</b> &mdash; Carbon&ndash;fluorine bonds, the strongest single bonds in
-          organic chemistry, coming apart under supercritical water. Scheduling that reaction as cheaply as
-          possible is what AxOptimise does.</figcaption>
+          <figcaption class="cap"><b>Fig. 01.</b> Carbon and fluorine bonds, the strongest single bonds in organic
+          chemistry, coming apart under supercritical water. Scheduling that reaction as cheaply as possible
+          is what AxOptimise does.</figcaption>
         </figure>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 02 · VERIDIAN ============ -->
+<!-- ============ 02 VERIDIAN ============ -->
 <section id="veridian" class="case">
   <div class="wrap">
     <div class="case-grid">
       <div class="rail rv">
-        <div class="rail-num">02 &mdash; Founder</div>
+        <div class="rail-num">02</div>
         <div class="rail-org">Veridian</div>
-        <div class="rail-meta">iOS &amp; Android<br/>0-to-1, solo<br/>2025 &mdash;</div>
-        <span class="rail-tag">Consumer &middot; Climate</span>
+        <div class="rail-meta">iOS and Android<br/>0 to 1, solo<br/>2025 to present</div>
+        <span class="rail-tag">Consumer. Climate.</span>
       </div>
 
       <div>
         <div class="body-col rv">
-          <h2>Every carbon app makes you log by hand. That&rsquo;s why nobody keeps using them.</h2>
-          <p>Veridian started as a manual logger, same as everything else in the category. Then I tore down
-          four rivals &mdash; <b>Klima, Joro, Greenly, Miles</b>. All of them push the data entry onto the user.
-          Manual logging isn&rsquo;t a feature gap; it&rsquo;s the adoption failure.</p>
-          <p>So I repositioned around <b>automatic detection</b> &mdash; an autopilot, not a logbook. Flat
-          pricing on purpose, to stay clear of the offset-resale model that quietly killed comparable apps.</p>
+          <h2>Most people have no idea what an ordinary day costs the planet.</h2>
+          <p>You cannot fix what you cannot see, and nobody wants to spend their evening typing in what they
+          ate and how they got to work. That is the real problem, not a missing feature.</p>
+          <p>I looked at four existing apps, <b>Klima, Joro, Greenly, Miles.</b> Every one of them asks the
+          user to log their own life by hand, so people quit within days.</p>
+          <p>Veridian watches what you already do, your driving, your food, your energy use, and turns it into
+          one number and one clear next step. No typing. <b>The goal is not a bigger number to feel guilty
+          about. It is making an invisible cost visible enough to actually change it.</b></p>
         </div>
 
         <div class="gallery rv">
           <div class="gal-row">
             <figure class="shot">
-              <div class="frame"><img src="assets/01_home.png" alt="Veridian home screen: a ring showing 4.8 of a 22kg daily carbon budget used, with today's activities listed beneath" loading="lazy" /></div>
-              <figcaption>4.8 of 22kg today &mdash; auto-detected drive, logged coffee</figcaption>
+              <div class="frame"><img src="assets/01_home.png" alt="Veridian home screen. A ring shows 4.8 of a 22kg daily carbon budget used, with today's activities listed beneath" loading="lazy" /></div>
+              <figcaption>4.8 of 22kg today. Auto-detected drive, logged coffee.</figcaption>
             </figure>
             <figure class="shot">
               <div class="frame"><img src="assets/02_insights.png" alt="Veridian insights screen showing 17.9kg for the week with shopping responsible for 41 percent" loading="lazy" /></div>
-              <figcaption>Where the week actually went</figcaption>
+              <figcaption>Where the week actually went.</figcaption>
             </figure>
             <figure class="shot">
               <div class="frame"><img src="assets/03_passport_hero.png" alt="Veridian screen showing 44.2kg recorded for the first tracked month, marked as a baseline" loading="lazy" /></div>
-              <figcaption>44.2kg &mdash; a baseline, not a goal</figcaption>
+              <figcaption>44.2kg. A baseline, not a goal.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="frame"><img src="assets/06_calculator.png" alt="Veridian onboarding: a diet question with a roughly 7,050kg CO2e annual estimate" loading="lazy" /></div>
-              <figcaption>Onboarding anchored to EPA/DEFRA factors</figcaption>
+              <div class="frame"><img src="assets/06_calculator.png" alt="Veridian onboarding, a diet question with a roughly 7,050kg CO2e annual estimate" loading="lazy" /></div>
+              <figcaption>Onboarding anchored to EPA and DEFRA factors.</figcaption>
             </figure>
           </div>
-          <p class="gal-note">Real screens from my own use &mdash; not seed data, not mockups.</p>
+          <p class="gal-note">Real screens from my own use. Not seed data, not mockups.</p>
         </div>
 
         <details class="more rv">
-          <summary>The decisions I&rsquo;d defend</summary>
+          <summary>Product choices worth explaining</summary>
           <dl class="dl">
             <div class="dl-row">
-              <dt>Momentum, not streaks</dt>
-              <dd>Punitive streaks drive guilt-based churn &mdash; miss one day, delete the app. I built a <b>momentum model that forgives a missed day</b> instead of resetting you to zero.</dd>
+              <dt>Missing a day</dt>
+              <dd>Most trackers punish a missed day by resetting your streak to zero, so people just delete the app. Veridian <b>forgives a missed day</b> instead of wiping out your progress.</dd>
             </div>
             <div class="dl-row">
-              <dt>Confidence, not theater</dt>
-              <dd>The emissions model <b>scores its own confidence</b> and shows it. An estimate labelled as an estimate earns more trust than a fake-exact number.</dd>
+              <dt>How sure is the number</dt>
+              <dd>The emissions model <b>shows how confident it is</b> in its own estimate. A number labeled as a guess earns more trust than a fake exact one.</dd>
             </div>
             <div class="dl-row">
-              <dt>Battery as a constraint</dt>
-              <dd>Seven-day motion history with no measurable battery drain, and policy-safe Android activity recognition. An autopilot that eats your battery gets uninstalled no matter how good the model is.</dd>
+              <dt>Your phone's battery</dt>
+              <dd>Seven days of motion history with no real battery drain, using only what Android allows for background tracking. An app that drains your battery gets deleted no matter how good the model is.</dd>
             </div>
             <div class="dl-row">
               <dt>Status</dt>
-              <dd>MVP built, <b>repo private</b>, public launch targeted later this year. A portfolio piece <b>and</b> an intended company &mdash; I&rsquo;m building it like the latter.</dd>
+              <dd>MVP built, <a href="https://github.com/vedantlakhani/Veridian" target="_blank" rel="noopener">code here</a>, public launch targeted later this year. A portfolio piece and an intended company. I am building it like the latter.</dd>
             </div>
           </dl>
         </details>
@@ -513,56 +524,52 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   </div>
 </section>
 
-<!-- ============ 03 · BARCLAYS ============ -->
+<!-- ============ 03 BARCLAYS ============ -->
 <section id="barclays" class="case">
   <div class="wrap">
     <div class="case-grid">
       <div class="rail rv">
-        <div class="rail-num">03 &mdash; Before</div>
+        <div class="rail-num">03</div>
         <div class="rail-org">Barclays PLC</div>
-        <div class="rail-meta">Senior Product Analyst<br/>Pune, India<br/>2022 &ndash; 2025</div>
-        <span class="rail-tag">Banking &middot; Data</span>
+        <div class="rail-meta">Senior Product Analyst<br/>Pune, India<br/>2022 to 2025</div>
+        <span class="rail-tag">Banking. Data.</span>
       </div>
 
       <div>
         <div class="body-col rv">
-          <h2>Three years turning a bank&rsquo;s data exhaust into product.</h2>
-          <p>Promoted in just over a year. I authored the business case that moved <b>130+ ETL workflows</b>
-          off on-premise Hadoop onto AWS, unified four siloed dashboards into a single Tableau platform, and
-          automated a client reporting pipeline that had eaten 50+ hours every month for a decade.</p>
+          <h2>Three years building the dashboards a bank actually ran on.</h2>
+          <p>Promoted from analyst to senior product analyst in just over a year. Each of the things below
+          is a separate project, not one story. Together they are what three years at a bank looked like.</p>
         </div>
 
-        <div class="ledger rv">
-          <div class="lg-row"><span>ETL workflows migrated, Hadoop &rarr; AWS</span><span class="lv">130+</span></div>
-          <div class="lg-row"><span>Reporting overhead, four dashboards unified</span><span class="lv">&minus;60%</span></div>
-          <div class="lg-row"><span>Platform penetration across six analytics tools</span><span class="lv">+35%</span></div>
-          <div class="lg-row"><span>Manual reporting hours freed, monthly</span><span class="lv">50+</span></div>
-          <div class="lg-row total"><span>Annualized savings</span><span class="lv">&pound;500,000</span></div>
+        <div class="achv rv">
+          <div class="achv-row">
+            <div class="achv-head"><span class="achv-name">Leadership KPI dashboard</span><span class="achv-num">6 directors' teams</span></div>
+            <p>Unified six directors' team metrics into one Tableau view with two-level drill-downs, replacing siloed manual reporting. It became the standing report in weekly leadership reviews.</p>
+          </div>
+          <div class="achv-row">
+            <div class="achv-head"><span class="achv-name">Propensity scoring dashboard</span><span class="achv-num">67% to 82% win rate</span></div>
+            <p>Built client personas and purchase-likelihood models for the bid management team, lifting win rate from 67% to 82% and reclaiming 40+ hours a week for a 10-person team by retiring Excel reporting.</p>
+          </div>
+          <div class="achv-row">
+            <div class="achv-head"><span class="achv-name">Hadoop to AWS migration</span><span class="achv-num">130+ workflows, £500,000/yr</span></div>
+            <p>I authored the business case for moving 130+ ETL workflows off an aging on-prem estate. It carried an annualized savings figure of £500,000 and got the cross-functional sign-off it needed.</p>
+          </div>
+          <div class="achv-row">
+            <div class="achv-head"><span class="achv-name">Automated client reporting pipeline</span><span class="achv-num">zero errors, 6 months</span></div>
+            <p>End-to-end validation specs kept 30+ weekly and monthly regulatory reports error free over a six-month review period, reclaiming 50+ hours a month.</p>
+          </div>
+          <div class="achv-row">
+            <div class="achv-head"><span class="achv-name">First travel emissions tracker at the bank</span><span class="achv-num">2 years before Veridian</span></div>
+            <p>A T&amp;E carbon calculator, built before I had any plan to found a climate company of my own.</p>
+          </div>
         </div>
-
-        <details class="more rv">
-          <summary>How the migration case got approved</summary>
-          <dl class="dl">
-            <div class="dl-row">
-              <dt>The problem</dt>
-              <dd>The &ldquo;Keeping the Lights On&rdquo; dashboard ran live every two hours for <b>20+ teams across four countries</b>, stitched from six data sources. The Hadoop estate underneath was aging and the scale ceiling was in sight.</dd>
-            </div>
-            <div class="dl-row">
-              <dt>The approach</dt>
-              <dd>A written build-vs-buy case with the annualized number attached, then alignment across product and engineering before a line of migration code was written.</dd>
-            </div>
-            <div class="dl-row">
-              <dt>Also shipped</dt>
-              <dd>A propensity-score dashboard telling the bid team <em>which</em> clients to call, and the bank&rsquo;s first travel-emissions tracker &mdash; two years before I founded a carbon company.</dd>
-            </div>
-          </dl>
-        </details>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 · MORE ============ -->
+<!-- ============ 04 MORE ============ -->
 <section id="more" class="case">
   <div class="wrap">
     <div class="case-grid">
@@ -575,51 +582,43 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
       <div>
         <div class="pcards rv">
           <div class="pcard">
-            <span class="pt">Published &middot; IEEE</span>
+            <span class="pt">Published. IEEE.</span>
             <h3>Personality from 8,675 tweets</h3>
-            <p>Predicted MBTI type from tweet text using TF-IDF features and an XGBoost classifier. Peer-reviewed and published.</p>
+            <p>Predicted MBTI type from tweet text using TF-IDF features and an XGBoost classifier. Peer reviewed and published.</p>
+            <a class="pl" href="assets/Personality_Prediction_IEEE.pdf" target="_blank" rel="noopener">Read the paper &rarr;</a>
           </div>
           <div class="pcard">
-            <span class="pt">Hackathon &middot; Team lead</span>
-            <h3>Air quality &times; demographics</h3>
-            <p>Filed a right-to-information request to get official data in three days, then mapped pollution against demographics for Mumbai&rsquo;s M-Ward. Advanced in DeepBlue.</p>
-          </div>
-          <div class="pcard">
-            <span class="pt">Internship &middot; Blue Eye Soft</span>
-            <h3>Solar system on NASA data</h3>
-            <p>Built a navigable solar system in Unreal Engine from real NASA datasets. Presented at the DefTech hackathon in Azerbaijan.</p>
+            <span class="pt">Hackathon. Team lead.</span>
+            <h3>Air quality by demographics</h3>
+            <p>Filed a right to information request to get official data in three days, then mapped pollution against demographics for Mumbai's M-Ward. Advanced in DeepBlue.</p>
+            <a class="pl" href="https://github.com/vedantlakhani" target="_blank" rel="noopener">GitHub &rarr;</a>
           </div>
         </div>
 
         <div class="idx rv">
           <div class="idx-row">
-            <span class="ix-org">Duke Community Affairs</span>
-            <span class="ix-role">Product Manager &middot; Oct 25 &ndash; Apr 26</span>
-            <span class="ix-line">Ran a build-vs-buy analysis off 20+ stakeholder interviews, then shipped an AI-personalized onboarding platform &mdash; ramp-up fell from two weeks to three days.</span>
-            <span class="ix-num">15 interns</span>
+            <div class="ix-left"><span class="ix-org">Duke Community Affairs</span><span class="ix-role">Product Manager, Oct 2025 to Apr 2026</span></div>
+            <span class="ix-line">AI-personalized onboarding. Ramp-up fell from two weeks to five days for 10 interns.</span>
+            <span class="ix-num">10 interns</span>
           </div>
           <div class="idx-row">
-            <span class="ix-org">Credain Networks</span>
-            <span class="ix-role">PM Intern &middot; 2022</span>
-            <span class="ix-line">GTM strategy and whitepaper that drew interest from 6+ pre-seed investors; MVP to three pilot clients in five months.</span>
+            <div class="ix-left"><span class="ix-org">Credain Networks</span><span class="ix-role">PM Intern, 2022</span></div>
+            <span class="ix-line">GTM strategy that drew interest from 6+ pre-seed investors. MVP to three pilot clients in five months.</span>
             <span class="ix-num">3 clients</span>
           </div>
           <div class="idx-row">
-            <span class="ix-org">Tableau</span>
-            <span class="ix-role">Student Ambassador &middot; 2022&ndash;23</span>
-            <span class="ix-line">Ran five data-literacy workshops for 100+ professionals while still an undergraduate.</span>
-            <span class="ix-num">1 of 34 worldwide</span>
+            <div class="ix-left"><span class="ix-org">Tableau</span><span class="ix-role">Student Ambassador, 2022 to 2023</span></div>
+            <span class="ix-line">Ran five data literacy workshops for 100+ professionals as an undergraduate.</span>
+            <span class="ix-num">1 of 34</span>
           </div>
           <div class="idx-row">
-            <span class="ix-org">Duke University</span>
-            <span class="ix-role">MEnM &middot; 2025&ndash;27</span>
-            <span class="ix-line">Managing AI in Business &middot; Design Climate &middot; Design Thinking. General Secretary, MEM Product Management Club.</span>
+            <div class="ix-left"><span class="ix-org">Duke University</span><span class="ix-role">MEM, 2025 to 2027</span></div>
+            <span class="ix-line">General Secretary, MEM Product Management Club.</span>
             <span class="ix-num">3.9 GPA</span>
           </div>
           <div class="idx-row">
-            <span class="ix-org">University of Mumbai</span>
-            <span class="ix-role">B.E. Computer Engineering</span>
-            <span class="ix-line">Hit a first-year backlog, fought through it, then mentored seven juniors facing the same wall.</span>
+            <div class="ix-left"><span class="ix-org">University of Mumbai</span><span class="ix-role">B.E. Computer Engineering</span></div>
+            <span class="ix-line">Fought through a first year backlog, then mentored seven juniors facing the same wall.</span>
             <span class="ix-num">7 mentored</span>
           </div>
         </div>
@@ -634,20 +633,20 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   <div class="wrap">
     <div class="ct-grid">
       <div>
-        <h2 class="ct-head rv">Building something that touches the <em>physical world?</em></h2>
-        <p class="ct-sub rv">I&rsquo;m looking for a Summer 2026 product internship &mdash; ideally somewhere the
-        product has consequences you can measure. Durham, NC, and happy to relocate.</p>
+        <h2 class="ct-head rv">Open to Summer 2026.</h2>
+        <p class="ct-sub rv">Looking for a product internship where the work has consequences you can
+        measure. Durham, NC, and happy to relocate.</p>
       </div>
       <div class="ct-links rv">
         <a href="mailto:vedant.lakhani@duke.edu">Email<span class="ar">&rarr;</span></a>
         <a href="https://www.linkedin.com/in/vedantlakhani" target="_blank" rel="noopener">LinkedIn<span class="ar">&rarr;</span></a>
         <a href="https://github.com/vedantlakhani" target="_blank" rel="noopener">GitHub<span class="ar">&rarr;</span></a>
         <a href="https://public.tableau.com/app/profile/vedant.lakhani/vizzes" target="_blank" rel="noopener">Tableau<span class="ar">&rarr;</span></a>
-        <a href="Vedant_Lakhani_Resume.pdf" download>R&eacute;sum&eacute; (PDF)<span class="ar">&darr;</span></a>
+        <a href="Vedant_Lakhani_Resume.pdf" download>Résumé (PDF)<span class="ar">&darr;</span></a>
       </div>
     </div>
     <div class="foot rv">
-      <span>&copy; 2026 Vedant Lakhani</span>
+      <span>© 2026 Vedant Lakhani</span>
       <span id="clock">Durham, NC</span>
     </div>
   </div>
@@ -661,7 +660,6 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   var reduced = false;
   try{ reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
 
-  /* reveal — registered first so nothing below can strand hidden content */
   if (!hasIO){
     document.querySelectorAll('.rv, .correction').forEach(function(el){ el.classList.add('is-inview'); });
   }
@@ -675,7 +673,6 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
     document.querySelectorAll('.rv, .correction').forEach(function(el){ io.observe(el); });
   });
 
-  /* provenance: tap/click toggle, one open at a time, Esc closes */
   safe(function(){
     var btns = document.querySelectorAll('.pv-btn');
     function closeAll(){ btns.forEach(function(o){ o.setAttribute('aria-expanded','false'); }); }
@@ -691,7 +688,6 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
   });
 
-  /* local clock */
   safe(function(){
     var el = document.getElementById('clock');
     if (!el) return;
@@ -704,7 +700,6 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
     tick(); setInterval(tick, 30000);
   });
 
-  /* molecule: scroll breaks the bonds, irreversibly */
   safe(function(){
     var mol = document.getElementById('fig-mol');
     if (!mol) return;

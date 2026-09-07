@@ -39,6 +39,7 @@ html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 body{
   font-family:var(--sans); background:var(--paper); color:var(--ink);
   font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 ::selection{ background:var(--accent); color:#fff; }
 a{ color:inherit; }
@@ -60,7 +61,7 @@ nav .wrap{ display:flex; align-items:center; justify-content:space-between; heig
 
 /* ---------- HERO ---------- */
 #hero{ padding:clamp(52px,9vh,110px) 0 clamp(30px,5vh,50px); }
-.hero-grid{ display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:clamp(28px,5vw,72px); align-items:start; }
+.hero-grid{ display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:clamp(28px,5vw,72px); align-items:center; }
 @media (max-width:940px){ .hero-grid{ grid-template-columns:1fr; align-items:start; gap:32px; } }
 
 .avail{

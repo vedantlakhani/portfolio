@@ -112,7 +112,11 @@ h1.name{
 .pv-btn{
   font-family:var(--mono); font-size:.34em; line-height:1; color:var(--accent);
   background:none; border:none; cursor:pointer; padding:0 0 0 .22em; border-radius:3px;
-  vertical-align:super;
+  vertical-align:super; position:relative;
+}
+.pv-btn::before{
+  content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:24px; height:24px;
 }
 .pv-btn:hover{ opacity:.55; }
 .pv-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
@@ -127,8 +131,10 @@ h1.name{
 .m:hover .pv-pop, .pv-btn:focus-visible + .pv-pop, .pv-btn[aria-expanded="true"] + .pv-pop{
   opacity:1; visibility:visible; transform:none;
 }
-@media (max-width:680px){ .pv-pop{ max-width:min(272px,66vw); } }
-@media (max-width:760px){ .proof-row > div:nth-child(even) .pv-pop{ left:auto; right:0; } }
+@media (max-width:760px){
+  .pv-pop{ max-width:calc(50vw - 60px); }
+  .proof-row > div:nth-child(even) .pv-pop{ left:auto; right:0; }
+}
 
 /* ---------- PROOF STRIP ---------- */
 #proof{ border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); padding:clamp(24px,4vh,38px) 0; }
@@ -359,19 +365,19 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   <div class="wrap">
     <div class="proof-row">
       <div>
-        <div class="pf-val"><span class="m">43<span class="u">%</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 43 percent">&#9702;</button><span class="pv-pop" role="tooltip">AxOptimise batch cost reduction. Corrected down from 47% after an audit I commissioned. Revalidated against 150+ pages of DoD and EPA field reports.</span></span></div>
+        <div class="pf-val"><span class="m">43<span class="u">%</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 43 percent" aria-describedby="pv-pop-1">&#9702;</button><span class="pv-pop" id="pv-pop-1" role="group">AxOptimise batch cost reduction. Corrected down from 47% after an audit I commissioned. Revalidated against 150+ pages of DoD and EPA field reports.</span></span></div>
         <span class="pf-key">Batch cost cut at AxNano</span>
       </div>
       <div>
-        <div class="pf-val"><span class="m">12<span class="u">mo</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 12 months">&#9702;</button><span class="pv-pop" role="tooltip">A 2024 grad school essay said I would launch a carbon tracker in the long term. Veridian shipped 12 months later.</span></span></div>
+        <div class="pf-val"><span class="m">12<span class="u">mo</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 12 months" aria-describedby="pv-pop-2">&#9702;</button><span class="pv-pop" id="pv-pop-2" role="group">A 2024 grad school essay said I would launch a carbon tracker in the long term. Veridian shipped 12 months later.</span></span></div>
         <span class="pf-key">Idea to shipped app, Veridian</span>
       </div>
       <div>
-        <div class="pf-val"><span class="m">10<span class="u">+</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 10 plus dashboards">&#9702;</button><span class="pv-pop" role="tooltip">Built for internal teams at Barclays over three years, including a leadership KPI dashboard for six directors and a propensity scoring tool for the bid team.</span></span></div>
+        <div class="pf-val"><span class="m">10<span class="u">+</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 10 plus dashboards" aria-describedby="pv-pop-3">&#9702;</button><span class="pv-pop" id="pv-pop-3" role="group">Built for internal teams at Barclays over three years, including a leadership KPI dashboard for six directors and a propensity scoring tool for the bid team.</span></span></div>
         <span class="pf-key">Dashboards shipped at Barclays</span>
       </div>
       <div>
-        <div class="pf-val"><span class="m">3.9<span class="u">/4</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 3.9 GPA">&#9702;</button><span class="pv-pop" role="tooltip">Master of Engineering Management, Duke University, Pratt School of Engineering. Class of 2027.</span></span></div>
+        <div class="pf-val"><span class="m">3.9<span class="u">/4</span><button class="pv-btn" type="button" aria-expanded="false" aria-label="Source for 3.9 GPA" aria-describedby="pv-pop-4">&#9702;</button><span class="pv-pop" id="pv-pop-4" role="group">Master of Engineering Management, Duke University, Pratt School of Engineering. Class of 2027.</span></span></div>
         <span class="pf-key">Duke MEM, cumulative</span>
       </div>
     </div>
@@ -639,19 +645,19 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
           <dl class="dl">
             <div class="dl-row">
               <dt>Memory OS</dt>
-              <dd>Email and decisions for a $1M+ industrial pilot land in a schema-enforced markdown store instead of scattered threads, with Python hooks that surfaced a critical feed deviation before it reached a customer. 5 teammates use it as the source of truth.</dd>
+              <dd>I check it before a stakeholder call, not after. The point was catching a wrong assumption before it reaches a room, not writing down what happened once it already had.</dd>
             </div>
             <div class="dl-row">
               <dt>Company OS</dt>
-              <dd>A second system at AxNano that maps the company's own functions into one operating layer wired to existing tools, so a question routes to the person who can actually answer it.</dd>
+              <dd>Scoped narrow on purpose. It only routes questions people had already asked twice, not everything a company might ask on day one.</dd>
             </div>
             <div class="dl-row">
-              <dt>Veridian's capture layer</dt>
-              <dd>Claude reads a receipt photo and itemizes it into an emissions estimate. Motion detection and a Plaid-linked bank feed cover the rest, so nothing needs typing from memory.</dd>
+              <dt>Why Claude over fixed OCR</dt>
+              <dd>A rules-based receipt parser breaks the moment a store changes its layout. Claude reads the photo the way a person would, so it does not need a template for every store.</dd>
             </div>
             <div class="dl-row">
               <dt>Judgment, not just prompting</dt>
-              <dd>The AxOptimise model that reduced batch costs also got audited and corrected by 4 points before it reached a customer. Knowing when to trust an AI-assisted number, and when to check it, is the actual skill.</dd>
+              <dd>That audit changed how I ship now. Nothing customer-facing goes out without an adversarial pass first, on this project or the next one.</dd>
             </div>
           </dl>
         </details>
@@ -746,7 +752,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
         <h2 class="ct-head rv">Open to Summer 2026.</h2>
         <p class="ct-sub rv">Looking for a product internship where the work has consequences you can
         measure. Durham, NC, and happy to relocate.</p>
-        <p class="ct-sub rv">Every number on this page shows its source. If one of them turns out wrong,
+        <p class="ct-sub rv">The headline numbers above show their source on hover or tap. If one of them turns out wrong,
         I'd rather you hear it from me first.</p>
       </div>
       <div class="ct-links rv">

@@ -308,6 +308,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
       <li><a href="#axnano">AxNano</a></li>
       <li><a href="#veridian">Veridian</a></li>
       <li><a href="#barclays">Barclays</a></li>
+      <li><a href="#ai">AI Systems</a></li>
       <li><a href="#more">More</a></li>
     </ul>
     <a class="nav-cta" href="#contact">Get in touch</a>
@@ -578,12 +579,71 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   </div>
 </section>
 
-<!-- ============ 04 MORE ============ -->
-<section id="more" class="case">
+<!-- ============ 04 AI SYSTEMS ============ -->
+<section id="ai" class="case">
   <div class="wrap">
     <div class="case-grid">
       <div class="rail rv">
         <div class="rail-num">04</div>
+        <div class="rail-org">AI Systems</div>
+        <div class="rail-meta">Tools I build with,<br/>not tools I talk about</div>
+        <span class="rail-tag">Applied. Shipped.</span>
+      </div>
+
+      <div>
+        <div class="body-col rv">
+          <h2>I don't just evaluate AI products. I ship the systems underneath them.</h2>
+          <p>Every project on this page has an AI system doing real work inside it, not a chatbot bolted on
+          for a demo. Three of them, briefly:</p>
+        </div>
+
+        <div class="trio rv">
+          <div class="trio-item">
+            <div class="trio-v">13+</div>
+            <div class="trio-l">Decisions logged in AxNano's Memory OS, a schema-enforced knowledge base for a five-organization pilot, wired through Power Automate, Teams, and Claude.</div>
+          </div>
+          <div class="trio-item">
+            <div class="trio-v">~12</div>
+            <div class="trio-l">Claude-backed functions across Veridian, from itemizing a receipt photo to categorizing a Plaid transaction. Ones not yet load-bearing fall back to a simple heuristic.</div>
+          </div>
+          <div class="trio-item">
+            <div class="trio-v">1</div>
+            <div class="trio-l">This page. Built and iterated with Claude Code on a git-based deploy pipeline, no separate engineering handoff.</div>
+          </div>
+        </div>
+
+        <details class="more rv">
+          <summary>What this looks like in practice</summary>
+          <dl class="dl">
+            <div class="dl-row">
+              <dt>Memory OS</dt>
+              <dd>Email and decisions for a $1M+ industrial pilot land in a schema-enforced markdown store instead of scattered threads, with Python hooks that surfaced a critical feed deviation before it reached a customer. 5 teammates use it as the source of truth.</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Company OS</dt>
+              <dd>A second system at AxNano that maps the company's own functions into one operating layer wired to existing tools, so a question routes to the person who can actually answer it.</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Veridian's capture layer</dt>
+              <dd>Claude reads a receipt photo and itemizes it into an emissions estimate. Motion detection and a Plaid-linked bank feed cover the rest, so nothing needs typing from memory.</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Judgment, not just prompting</dt>
+              <dd>The AxOptimise model that reduced batch costs also got audited and corrected by 4 points before it reached a customer. Knowing when to trust an AI-assisted number, and when to check it, is the actual skill.</dd>
+            </div>
+          </dl>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 MORE ============ -->
+<section id="more" class="case">
+  <div class="wrap">
+    <div class="case-grid">
+      <div class="rail rv">
+        <div class="rail-num">05</div>
         <div class="rail-org">Also</div>
         <div class="rail-meta">Research, hackathons,<br/>and earlier work</div>
       </div>

@@ -239,6 +239,14 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
 .achv-head{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
 .achv-name{ font-size:16.5px; font-weight:700; letter-spacing:-.01em; }
 .achv-num{ font-family:var(--mono); font-size:13px; color:var(--accent); white-space:nowrap; }
+.barcmp{ margin-top:14px; }
+.barcmp-row{ display:flex; align-items:center; gap:12px; margin-top:8px; }
+.barcmp-label{ width:56px; font-family:var(--mono); font-size:11.5px; color:var(--muted); flex-shrink:0; }
+.barcmp-track{ flex:1; height:9px; background:var(--line2); border-radius:5px; overflow:hidden; }
+.barcmp-fill{ height:100%; border-radius:5px; background:var(--faint); width:0; transition:width 1s cubic-bezier(.16,1,.3,1); }
+.barcmp-fill.after{ background:var(--accent); }
+.barcmp.is-inview .barcmp-fill[data-w]{ width:var(--w); }
+.barcmp-val{ font-family:var(--mono); font-size:12.5px; font-weight:600; width:34px; text-align:right; flex-shrink:0; }
 .achv-row p{ margin-top:6px; font-size:15px; line-height:1.55; color:var(--muted); max-width:60ch; }
 
 /* ---------- PROJECT CARDS ---------- */
@@ -276,6 +284,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
 .ct-head{ font-size:clamp(1.9rem,4.4vw,3.1rem); font-weight:700; line-height:1.08; letter-spacing:-.035em; max-width:20ch; }
 .ct-head em{ font-style:normal; color:var(--accent); }
 .ct-sub{ margin-top:18px; font-size:16.5px; line-height:1.6; color:var(--ink2); max-width:46ch; }
+.ct-sub + .ct-sub{ margin-top:12px; }
 .ct-links{ display:flex; flex-direction:column; }
 .ct-links a{
   display:flex; justify-content:space-between; align-items:center; gap:14px;
@@ -560,6 +569,18 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
           <div class="achv-row">
             <div class="achv-head"><span class="achv-name">Propensity scoring dashboard</span><span class="achv-num">67% to 82% win rate</span></div>
             <p>Built client personas and purchase-likelihood models for the bid management team, lifting win rate from 67% to 82% and reclaiming 40+ hours a week for a 10-person team by retiring Excel reporting.</p>
+            <div class="barcmp">
+              <div class="barcmp-row">
+                <span class="barcmp-label">Before</span>
+                <div class="barcmp-track"><div class="barcmp-fill" data-w style="--w:67%"></div></div>
+                <span class="barcmp-val">67%</span>
+              </div>
+              <div class="barcmp-row">
+                <span class="barcmp-label">After</span>
+                <div class="barcmp-track"><div class="barcmp-fill after" data-w style="--w:82%"></div></div>
+                <span class="barcmp-val">82%</span>
+              </div>
+            </div>
           </div>
           <div class="achv-row">
             <div class="achv-head"><span class="achv-name">Hadoop to AWS migration</span><span class="achv-num">130+ workflows, £500,000/yr</span></div>
@@ -724,6 +745,8 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
         <h2 class="ct-head rv">Open to Summer 2026.</h2>
         <p class="ct-sub rv">Looking for a product internship where the work has consequences you can
         measure. Durham, NC, and happy to relocate.</p>
+        <p class="ct-sub rv">Every number on this page shows its source. If one of them turns out wrong,
+        I'd rather you hear it from me first.</p>
       </div>
       <div class="ct-links rv">
         <a href="mailto:vedant.lakhani@duke.edu">Email<span class="ar">&rarr;</span></a>
@@ -749,7 +772,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
   try{ reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
 
   if (!hasIO){
-    document.querySelectorAll('.rv, .correction').forEach(function(el){ el.classList.add('is-inview'); });
+    document.querySelectorAll('.rv, .correction, .barcmp').forEach(function(el){ el.classList.add('is-inview'); });
   }
   safe(function(){
     if (!hasIO) return;
@@ -758,7 +781,7 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
         if (en.isIntersecting){ en.target.classList.add('is-inview'); io.unobserve(en.target); }
       });
     }, { threshold:0.12, rootMargin:'0px 0px -5% 0px' });
-    document.querySelectorAll('.rv, .correction').forEach(function(el){ io.observe(el); });
+    document.querySelectorAll('.rv, .correction, .barcmp').forEach(function(el){ io.observe(el); });
   });
 
   safe(function(){

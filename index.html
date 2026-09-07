@@ -477,28 +477,30 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
           ate and how they got to work. That is the real problem, not a missing feature.</p>
           <p>I looked at four existing apps, <b>Klima, Joro, Greenly, Miles.</b> Every one of them asks the
           user to log their own life by hand, so people quit within days.</p>
-          <p>Veridian watches what you already do, your driving, your food, your energy use, and turns it into
-          one number and one clear next step. No typing. <b>The goal is not a bigger number to feel guilty
-          about. It is making an invisible cost visible enough to actually change it.</b></p>
+          <p>Veridian captures it three ways instead of one form. <b>Motion detection</b> for the drive to work.
+          A <b>Plaid-linked bank feed</b> for the purchases a diary would miss. A photo of a receipt that
+          <b>Claude reads and itemizes</b> into a footprint. No typing a day from memory. <b>The goal is not a
+          bigger number to feel guilty about. It is making an invisible cost visible enough to actually
+          change it.</b></p>
         </div>
 
         <div class="gallery rv">
           <div class="gal-row">
             <figure class="shot">
-              <div class="frame"><img src="assets/01_home.png" alt="Veridian home screen. A ring shows 4.8 of a 22kg daily carbon budget used, with today's activities listed beneath" loading="lazy" /></div>
-              <figcaption>4.8 of 22kg today. Auto-detected drive, logged coffee.</figcaption>
+              <div class="frame"><img src="assets/veridian-today.png" alt="Veridian Today screen. A ring shows 4.7 of a 22kg daily carbon budget used, with auto-logged activities and ranked next moves beneath" loading="lazy" /></div>
+              <figcaption>Today: 4.7 of 22kg, a drive and a meal auto-logged.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="frame"><img src="assets/02_insights.png" alt="Veridian insights screen showing 17.9kg for the week with shopping responsible for 41 percent" loading="lazy" /></div>
-              <figcaption>Where the week actually went.</figcaption>
+              <div class="frame"><img src="assets/veridian-trends.png" alt="Veridian Trends screen showing 4.7kg for the week, a day-by-day chart, and a composition breakdown by food, transport, and energy" loading="lazy" /></div>
+              <figcaption>Trends: a week decoded, day by day and by category.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="frame"><img src="assets/03_passport_hero.png" alt="Veridian screen showing 44.2kg recorded for the first tracked month, marked as a baseline" loading="lazy" /></div>
-              <figcaption>44.2kg. A baseline, not a goal.</figcaption>
+              <div class="frame"><img src="assets/veridian-passport.png" alt="Veridian Carbon Passport screen showing 6.3kg CO2e for August 2026, down 86 percent from the prior month" loading="lazy" /></div>
+              <figcaption>The Carbon Passport: 6.3kg in August, down 86% from a heavier July.</figcaption>
             </figure>
             <figure class="shot">
-              <div class="frame"><img src="assets/06_calculator.png" alt="Veridian onboarding, a diet question with a roughly 7,050kg CO2e annual estimate" loading="lazy" /></div>
-              <figcaption>Onboarding anchored to EPA and DEFRA factors.</figcaption>
+              <div class="frame"><img src="assets/veridian-onboarding.png" alt="Veridian onboarding, a transport question with per-mode annual CO2e estimates building to a 5,800kg starting footprint" loading="lazy" /></div>
+              <figcaption>Onboarding anchors a starting estimate to real per-mode numbers.</figcaption>
             </figure>
           </div>
           <p class="gal-note">Real screens from my own use. Not seed data, not mockups.</p>
@@ -508,20 +510,20 @@ figcaption.cap b{ color:var(--ink2); font-weight:600; }
           <summary>Product choices worth explaining</summary>
           <dl class="dl">
             <div class="dl-row">
-              <dt>Missing a day</dt>
-              <dd>Most trackers punish a missed day by resetting your streak to zero, so people just delete the app. Veridian <b>forgives a missed day</b> instead of wiping out your progress.</dd>
+              <dt>Cut the gamification</dt>
+              <dd>An earlier build leaned on streaks, points, and a wall of achievement badges. It made the app feel like a chore tracker, not an instrument, so I cut it back to one honest number and let the badges sit quietly out of the way instead of driving the design.</dd>
             </div>
             <div class="dl-row">
-              <dt>How sure is the number</dt>
-              <dd>The emissions model <b>shows how confident it is</b> in its own estimate. A number labeled as a guess earns more trust than a fake exact one.</dd>
+              <dt>Three ways in, one number out</dt>
+              <dd>Motion detection separates a drive from a walk automatically. Plaid turns a bank feed into spend-based emissions categories. Claude reads a receipt photo and itemizes it. About a dozen other Claude-backed functions sit behind the product; the ones not yet load-bearing fall back to a simple heuristic rather than failing silently.</dd>
             </div>
             <div class="dl-row">
-              <dt>Your phone's battery</dt>
-              <dd>Seven days of motion history with no real battery drain, using only what Android allows for background tracking. An app that drains your battery gets deleted no matter how good the model is.</dd>
+              <dt>Engineering rigor</dt>
+              <dd>44 test suites, 415 tests, on a project nobody is grading me on. I hold my own side projects to the same bar I'd want on a team.</dd>
             </div>
             <div class="dl-row">
               <dt>Status</dt>
-              <dd>MVP built, <a href="https://github.com/vedantlakhani/Veridian" target="_blank" rel="noopener">code here</a>, public launch targeted later this year. A portfolio piece and an intended company. I am building it like the latter.</dd>
+              <dd>Rebuilt onto this lighter design in August 2026, <a href="https://github.com/vedantlakhani/Veridian" target="_blank" rel="noopener">code here</a>. Validated with a small round of hands-on beta testers before the rebuild; not publicly launched yet. A portfolio piece and an intended company. I am building it like the latter.</dd>
             </div>
           </dl>
         </details>
